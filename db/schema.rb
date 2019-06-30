@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_30_021613) do
+ActiveRecord::Schema.define(version: 2019_06_30_041534) do
+
+  create_table "applications", force: :cascade do |t|
+    t.string "company"
+    t.date "date"
+    t.boolean "followup", default: false
+    t.text "response"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "companies", force: :cascade do |t|
     t.string "name"
