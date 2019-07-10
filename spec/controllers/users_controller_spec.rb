@@ -15,7 +15,7 @@ RSpec.describe UsersController, type: :controller do
                          email: "admiralgrace@googlemail.com",
                          password: "securepassword")
 
-      expect(user).to be_a_new(User)
+      expect(user).to_not be_a_new(User)
     end
   end
 end
