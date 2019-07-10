@@ -23,12 +23,12 @@ RSpec.describe StaticPagesController, type: :controller do
     end
   end
 
-  describe "Sign up page" do
-    it 'loads the sign up page' do
-      get :signup
-      expect(response.status).to eq(200)
-      expect(response.body).to include("Sign Up")
-    end
+  # describe "Sign up page" do
+  #   it 'loads the sign up page' do
+  #     get :signup
+  #     expect(response.status).to eq(200)
+  #     expect(response.body).to include("Sign Up")
+  #   end
 
     # it 'redirects user to companies#index' do
     #   user = User.create(name: "Grace Hopper",
@@ -37,13 +37,13 @@ RSpec.describe StaticPagesController, type: :controller do
     #
     #   expect(user).to be_a_new(User)
     # end
-  end
+  # end
 
-  describe "Log in page" do
-    it 'loads the log in page' do
-      get :login
-      expect(response.status).to eq(200)
-      expect(response.body).to include("Log In")
-    end
-  end
+  # describe "Log in page" do
+  #   it 'loads the log in page' do
+  #     get :login
+  #     expect(response.status).to eq(200)
+  #     expect(response.body).to include("Log In")
+  #   end
+  # end
 end
