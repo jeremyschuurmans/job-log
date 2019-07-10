@@ -38,6 +38,15 @@ RSpec.describe User, :type => :model do
       expect(user).to be_invalid
       user.delete
     end
+
+    it 'has a secure password' do
+      user = User.create(name: "Grace Hopper",
+                         email: "admiralgrace@googlemail.com",
+                         password: "securepassword")
+
+      expect(user.authenticate("notsecurepassword")).to eq(false)
+      expect(user.authenticate("securepassword")).to eq(user)
+    end
   end
 
   describe 'associations' do
