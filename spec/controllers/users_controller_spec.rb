@@ -10,7 +10,13 @@ RSpec.describe UsersController, type: :controller do
       expect(response.body).to include("Sign Up")
     end
 
-    it 'redirects user to companies#index' do
+    it 'instantiates a new user' do
+      user = User.new
+
+      expect(user).to be_a_new(User)
+    end
+
+    it 'redirects user to companies#index upon creation' do
       user = User.create(name: "Grace Hopper",
                          email: "admiralgrace@googlemail.com",
                          password: "securepassword")
