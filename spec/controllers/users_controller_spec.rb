@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe UsersController, type: :controller do
   render_views
 
-  describe "Sign Up Page" do
+  describe "New (sign up page)" do
     it 'loads the sign up page' do
       get :new
       expect(response.status).to eq(200)
@@ -15,7 +15,9 @@ RSpec.describe UsersController, type: :controller do
 
       expect(user).to be_a_new(User)
     end
+  end
 
+  describe "Create" do
     it 'redirects user to companies#index upon creation' do
       user = User.create(name: "Grace Hopper",
                          email: "admiralgrace@googlemail.com",
