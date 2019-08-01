@@ -5,12 +5,12 @@ RSpec.feature "UserSignUps", type: :feature do
   feature 'User Signs Up' do
     scenario 'with valid name, email, and password' do
       visit signup_path
-      fill_in 'Name', with: 'Ada Lovelace'
-      fill_in 'Email', with: 'ada@googlemail.com'
-      fill_in 'Password', with: 'password'
+      fill_in 'user_name', with: 'Ada Lovelace'
+      fill_in 'user_email', with: 'ada@googlemail.com'
+      fill_in 'user_password', with: 'password'
       click_button 'Sign Up'
 
-      current_path.should == "/companies/index"
+      expect(current_path).to eq('/companies')
       expect(page).to have_content('Sign Out')
     end
   end
