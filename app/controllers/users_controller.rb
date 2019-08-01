@@ -9,6 +9,10 @@ class UsersController < ApplicationController
     if @user.save
       log_in @user
       redirect_to companies_url
+      flash[:notice] = "Success!"
+    elsif User.exists?(name: @user.name, email: @user.email)
+      redirect_to login_url
+      flash[:alert] = "User exists. Please log in."
     else
       render 'new'
     end
