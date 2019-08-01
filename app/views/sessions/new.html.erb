@@ -3,3 +3,9 @@
 <% if flash[:alert] %>
   <div class="alert"><%= flash[:alert] %></div>
 <% end %>
+
+<%= form_for :session, url: {action: "create"} do |f| %>
+  <%= f.text_field :email %>
+  <%= f.password_field :password %>
+  <%= f.submit 'Log In' %>
+<% end %>
