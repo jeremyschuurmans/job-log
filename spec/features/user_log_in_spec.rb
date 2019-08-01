@@ -31,5 +31,4 @@ RSpec.feature "UserLogIns", type: :feature do
       expect(page).to have_content('Log In')
     end
   end
-
 end
