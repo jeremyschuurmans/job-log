@@ -1,1 +1,8 @@
 <h1>Sign Up</h1>
+
+<%= form_for @user, url: {action: "create"} do |f| %>
+  <%= f.text_field :name %>
+  <%= f.text_field :email %>
+  <%= f.password_field :password %>
+  <%= f.submit 'Sign Up' %>
+<% end %>
