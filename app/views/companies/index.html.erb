@@ -4,7 +4,7 @@
 <% end %>
 
 <% @companies.each do |company| %>
-  <%= company.name %>
+  <%= link_to company.name, company_path(company) %>
   <%= company.address %>
   <%= company.telephone_number %>
   <%= company.contact_person %>
