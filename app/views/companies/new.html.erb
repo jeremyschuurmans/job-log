@@ -1,0 +1,10 @@
+<%= form_for @company, url: {action: "create"} do |f| %>
+  <%= f.text_field :name %>
+  <%= f.text_field :address %>
+  <%= f.telephone_field :telephone_number %>
+  <%= f.text_field :contact_person %>
+  <%= f.hidden_field :user_id, :value => @user.id %>
+  <%= f.submit "Submit Company" %>
+<% end %>
+
+#hidden field for application id?

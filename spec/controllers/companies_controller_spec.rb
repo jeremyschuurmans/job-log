@@ -16,6 +16,9 @@ RSpec.describe CompaniesController, type: :controller do
 
   describe "New" do
     it "loads a new company form" do
+      user = User.create(name: "Grace Hopper",
+                         email: "admiralgrace@googlemail.com",
+                         password: "securepassword")
       get :new
       expect(response.status).to eq(200)
       expect(response.body).to include("Submit Company")
