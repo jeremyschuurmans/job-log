@@ -1,7 +1,5 @@
 Next steps:
 
-Company show page showing specific companies with add application button.
-
 New application form (with dropdown to assign to specific company)
 
 Application show page
@@ -17,3 +15,5 @@ Need tighter security (no url hacks, etc.)
 Format telephone numbers
 
 Edit actions for user info and company/application info
+
+Logo generator
