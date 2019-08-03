@@ -13,10 +13,10 @@ RSpec.feature "CreateCompanies", type: :feature do
 
       expect(current_path).to eq('/companies')
       expect(page).to have_content('Sign Out')
-      click_button 'Add a New Company'
+      click_link 'Add a New Company'
 
       expect(current_path).to eq('/companies/new')
-      expect(page).to have_content("Submit Company")
+      expect(page).to have_content("Name Address Phone Contact Person")
       fill_in 'company_name', with: "Planet Argon"
       fill_in 'company_address', with: "3530 N Vancouver Ave, Suite 300, Portland, OR 97227"
       fill_in 'company_telephone_number', with: 503-847-9214
