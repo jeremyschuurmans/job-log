@@ -14,8 +14,10 @@ class CompaniesController < ApplicationController
     if @company.save
       @user.companies << @company
       redirect_to companies_url
+      flash[:notice] = "Success!"
     else
-      redirect_to new_company_url
+      render 'new'
+      flash[:alert] = "Company not saved."
     end
   end
 
