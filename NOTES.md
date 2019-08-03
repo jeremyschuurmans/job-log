@@ -1,7 +1,5 @@
 Next steps:
 
-Company index page listing all companies
-
 Company show page showing specific companies with add application button.
 
 New application form (with dropdown to assign to specific company)
@@ -17,3 +15,5 @@ Once we have basic functionality, think about added features. Maps? Forgot passw
 Need tighter security (no url hacks, etc.)
 
 Format telephone numbers
+
+Edit actions for user info and company/application info
