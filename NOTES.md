@@ -15,3 +15,5 @@ Search feature??
 Once we have basic functionality, think about added features. Maps? Forgot password? Pagination?
 
 Need tighter security (no url hacks, etc.)
+
+Format telephone numbers

@@ -3,6 +3,13 @@
   <div class="notice"><%= flash[:notice] %></div>
 <% end %>
 
+<% @companies.each do |company| %>
+  <%= company.name %>
+  <%= company.address %>
+  <%= company.telephone_number %>
+  <%= company.contact_person %>
+<% end %>
+
 <p>Sign Out</p>
 
 <%= link_to("Add a New Company", new_company_path) %>
