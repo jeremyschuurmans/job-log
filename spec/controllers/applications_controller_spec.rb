@@ -16,9 +16,10 @@ RSpec.describe ApplicationsController, type: :controller do
 
   describe "New" do
     it "loads a new application form" do
-      user = User.create(name: "Grace Hopper",
-                         email: "admiralgrace@googlemail.com",
-                         password: "securepassword")
+      application = Application.create(company: "Pied Piper",
+                                       date: 9/25/2019,
+                                       followup: false,
+                                       response: nil)
       get :new
       expect(response.status).to eq(200)
       expect(response.body).to include("Submit Application")
