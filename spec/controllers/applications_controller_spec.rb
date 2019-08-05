@@ -19,7 +19,7 @@ RSpec.describe ApplicationsController, type: :controller do
       user = User.create(name: "Grace Hopper",
                          email: "admiralgrace@googlemail.com",
                          password: "securepassword")
-      get 'applications/new'
+      get :new
       expect(response.status).to eq(200)
       expect(response.body).to include("Submit Application")
     end
