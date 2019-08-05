@@ -9,7 +9,17 @@ class ApplicationsController < ApplicationController
 
   def create
     @user = User.find_by(params[:id])
+    @company = Company.find_by(name: params[:application][:company])
     @application = @user.applications.build(application_params)
+    if @application.save
+      @user.applications << @application
+      @company.application_id = @application.application_id
+      redirect_to companies_url
+      flash[:notice] = "Success!"
+    else
+      render 'new'
+      flash[:alert] = "Application not saved."
+    end
   end
 
   private

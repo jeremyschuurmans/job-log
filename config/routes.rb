@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get  '/login',  to: 'sessions#new'
   post '/login',  to: 'sessions#create'
 
-  resources :companies
-  resources :applications
+  resources :companies do
+    resources :applications
+  end
 end
