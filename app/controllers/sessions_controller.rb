@@ -8,10 +8,10 @@ class SessionsController < ApplicationController
     @user = User.find_by(email: params[:session][:email])
     if @user && @user.authenticate(params[:session][:password])
       log_in @user
-      redirect_to companies_url
+      redirect_back_or companies_url
     else
-      redirect_to login_url
       flash[:alert] = "Username or password is invalid."
+      redirect_to login_url
     end
   end
 
