@@ -5,7 +5,11 @@ RSpec.describe ApplicationsController, type: :controller do
 
   describe "Index" do
     it "loads the applications index page" do
-      get :index
+      company = Company.create(name: "Pied Piper",
+                               address: "12341234 Recursion Way",
+                               telephone_number: 555-555-5555,
+                               contact_person: "Nelson Bighetti")
+      get :index, params: { company_id: company.id }
       expect(response.status).to eq(200)
       expect(response.body).to include("Applications")
     end
@@ -16,11 +20,15 @@ RSpec.describe ApplicationsController, type: :controller do
 
   describe "New" do
     it "loads a new application form" do
-      application = Application.create(company: "Pied Piper",
-                                       date: 9/25/2019,
-                                       followup: false,
-                                       response: nil)
-      get :new
+      company = Company.create(name: "Pied Piper",
+                               address: "12341234 Recursion Way",
+                               telephone_number: 555-555-5555,
+                               contact_person: "Nelson Bighetti")
+      # application = Application.create(company_name: "Pied Piper",
+      #                                  date: 9/25/2019,
+      #                                  followup: false,
+      #                                  response: nil)
+      get :new, params: { company_id: company.id }
       expect(response.status).to eq(200)
       expect(response.body).to include("Submit Application")
     end
