@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :check_if_user_logged_in
+  before_action :check_if_user_logged_in, only: [:edit, :update]
   before_action :is_this_the_right_user?, only: [:edit, :update]
 
   def new
