@@ -10,9 +10,9 @@ class UsersController < ApplicationController
       log_in @user
       redirect_to companies_url
       flash[:notice] = "Success!"
-    elsif User.exists?(name: @user.name, email: @user.email)
+    elsif user_exists?
       redirect_to login_url
-      flash[:alert] = "User exists. Please log in."
+      flash[:danger] = "User exists. Please log in."
     else
       render 'new'
     end
@@ -23,4 +23,10 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :email, :password)
     end
+
+    def user_exists?
+      User.exists?(name: @user.name, email: @user.email)
+    end
+
+    
 end
