@@ -9,11 +9,10 @@ class ApplicationsController < ApplicationController
 
   def create
     @user = User.find_by(params[:id])
-    @company = Company.find_by(name: params[:application][:company])
-    @application = @user.applications.build(application_params)
+    @company = Company.find_by(name: params[:application][:company_name])
+    @application = Application.find_by(id: @company.id)
+    @application.update(application_params)
     if @application.save
-      @company.application_id = @application.application_id
-      # @user.applications << @application
       redirect_to companies_url
       flash[:notice] = "Success!"
     else
@@ -25,6 +24,6 @@ class ApplicationsController < ApplicationController
   private
 
     def application_params
-      params.require(:application).permit(:company, :date, :followup, :response, :application_id)
+      params.require(:application).permit(:company_name, :date, :followup, :response)
     end
 end

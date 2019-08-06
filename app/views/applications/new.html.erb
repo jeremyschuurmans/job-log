@@ -1,8 +1,8 @@
 <%= form_for @application, url: {action: "create"} do |f| %>
-  <%= f.select(:company, Company.all.collect {|c| c.name }, :prompt => "Please select the company you are applying to:") %>
+  <%= f.select(:company_name, Company.all.collect {|c| c.name }, :prompt => "Please select the company you are applying to:") %>
   <%= f.date_field :date %>
   <%= f.radio_button :followup, "Followed Up?" %>
   <%= f.text_area :response %>
-  <%= f.hidden_field :application, @application.id %>
+  <%#= f.hidden_field :application, @application.id %>
   <%= f.submit "Submit Application" %>
 <% end %>
