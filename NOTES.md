@@ -1,6 +1,6 @@
 Next steps (in no particular order):
 
-1. Create helper methods in SessionsHelper (current_user, etc.)
+
 2. Format page title? Favicon.
 3. User model:
     a. flesh out validations (case sensitivity, valid email structure, etc.)
