@@ -1,4 +1,8 @@
 class CompaniesController < ApplicationController
+  before_action :check_if_user_logged_in
+  # only: [:new, :create, :show]
+  before_action :is_this_the_right_user?, only: [:new, :create, :show]
+
 
   def index
     @companies = Company.all

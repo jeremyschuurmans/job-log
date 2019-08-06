@@ -5,6 +5,9 @@ RSpec.describe CompaniesController, type: :controller do
 
   describe "Index" do
     it "loads the companies index page" do
+      user = User.create(name: "Grace Hopper",
+                         email: "admiralgrace@googlemail.com",
+                         password: "securepassword")
       get :index
       expect(response.status).to eq(200)
       expect(response.body).to include("Companies")
