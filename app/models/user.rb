@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  has_many :companies, dependent: :destroy
-  has_many :applications, :through => :companies
+  has_many :applications, dependent: :destroy
+  has_many :companies, :through => :applications
 
   has_secure_password
 

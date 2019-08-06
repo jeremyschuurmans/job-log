@@ -1,9 +1,7 @@
 class Application < ApplicationRecord
-  has_many :companies, dependent: :destroy
-  has_many :users, :through => :companies
+  belongs_to :company, optional: true
+  belongs_to :user, optional: true
 
-  # accepts_nested_attributes_for :companies
-
-  validates :company, :date, presence: true
+  validates :company_name, :date, presence: true, allow_nil: true
   validates_inclusion_of :followup, in: [true, false]
 end

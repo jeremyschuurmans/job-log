@@ -10,15 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_30_044807) do
+ActiveRecord::Schema.define(version: 2019_08_06_002511) do
 
   create_table "applications", force: :cascade do |t|
-    t.string "company"
+    t.string "company_name"
     t.date "date"
     t.boolean "followup", default: false
     t.text "response"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.integer "company_id"
   end
 
   create_table "companies", force: :cascade do |t|
@@ -26,8 +28,6 @@ ActiveRecord::Schema.define(version: 2019_06_30_044807) do
     t.string "address"
     t.string "telephone_number"
     t.string "contact_person"
-    t.integer "user_id"
-    t.integer "application_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

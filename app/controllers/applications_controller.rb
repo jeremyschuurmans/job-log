@@ -12,8 +12,8 @@ class ApplicationsController < ApplicationController
     @company = Company.find_by(name: params[:application][:company])
     @application = @user.applications.build(application_params)
     if @application.save
-      @user.applications << @application
       @company.application_id = @application.application_id
+      # @user.applications << @application
       redirect_to companies_url
       flash[:notice] = "Success!"
     else

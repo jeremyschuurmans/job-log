@@ -1,6 +1,6 @@
 class Company < ApplicationRecord
-  belongs_to :user
-  belongs_to :application, optional: true
+  has_many :applications
+  has_many :users, :through => :applications
 
   validates :name, :address, :telephone_number, :contact_person, presence: true
 
