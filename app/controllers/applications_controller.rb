@@ -1,7 +1,7 @@
 class ApplicationsController < ApplicationController
 
   def index
-    
+
   end
 
   def new
@@ -14,7 +14,7 @@ class ApplicationsController < ApplicationController
     @application = Application.find_by(id: @company.id)
     @application.update(application_params)
     if @application.save
-      redirect_to companies_url
+      redirect_to company_application_url(id: @application.id)
       flash[:notice] = "Success!"
     else
       render 'new'
