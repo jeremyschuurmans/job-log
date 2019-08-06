@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.feature "CreateCompanies", type: :feature do
-  feature "User creates a new company" do
-    scenario "by filling out and submitting a new company form" do
+RSpec.feature "CreateApplications", type: :feature do
+  feature "User creates a new application" do
+    scenario "by filling out and submitting a new application form" do
       user = User.create(name: "Grace Hopper",
                          email: "admiralgrace@googlemail.com",
                          password: "securepassword")
@@ -29,6 +29,13 @@ RSpec.feature "CreateCompanies", type: :feature do
       expect(Application.last.user_id).to eq(user.id)
       expect(Application.last.company_id).to eq(Company.last.id)
       expect(Application.last.company_name).to eq(nil)
+
+      expect(current_path).to eq('/companies/1')
+      click_link 'Add a New Application'
+      expect(current_path).to eq('/companies/1/applications/new')
+      expect(page).to have_content("Submit Application")
+      find('#application_company_name').find(:xpath, 'Planet Argon').select_option
+
     end
   end
 end

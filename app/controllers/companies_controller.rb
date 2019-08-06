@@ -14,7 +14,7 @@ class CompaniesController < ApplicationController
     @company = @user.companies.build(company_params)
     if @company.save
       @user.companies << @company
-      redirect_to companies_url
+      redirect_to @company
       flash[:notice] = "Success!"
     else
       render 'new'
