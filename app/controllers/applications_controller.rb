@@ -1,7 +1,6 @@
 class ApplicationsController < ApplicationController
 
   def index
-
   end
 
   def new
@@ -20,6 +19,10 @@ class ApplicationsController < ApplicationController
       render 'new'
       flash[:alert] = "Application not saved."
     end
+  end
+
+  def show
+    @application = Application.find_by(params[:id])
   end
 
   private
