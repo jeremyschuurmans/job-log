@@ -2,12 +2,15 @@ require 'rails_helper'
 
 RSpec.describe CompaniesController, type: :controller do
   render_views
+  include UsersHelper
+  include SessionsHelper
 
   describe "Index" do
     it "loads the companies index page" do
       user = User.create(name: "Grace Hopper",
                          email: "admiralgrace@googlemail.com",
                          password: "securepassword")
+      log_in(user)
       get :index
       expect(response.status).to eq(200)
       expect(response.body).to include("Companies")
@@ -22,6 +25,7 @@ RSpec.describe CompaniesController, type: :controller do
       user = User.create(name: "Grace Hopper",
                          email: "admiralgrace@googlemail.com",
                          password: "securepassword")
+      log_in(user)
       get :new
       expect(response.status).to eq(200)
       expect(response.body).to include("Submit Company")

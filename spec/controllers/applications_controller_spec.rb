@@ -2,6 +2,8 @@ require 'rails_helper'
 
 RSpec.describe ApplicationsController, type: :controller do
   render_views
+  include UsersHelper
+  include SessionsHelper
 
   describe "Index" do
     it "loads the applications index page" do
@@ -12,7 +14,7 @@ RSpec.describe ApplicationsController, type: :controller do
                                address: "12341234 Recursion Way",
                                telephone_number: 555-555-5555,
                                contact_person: "Nelson Bighetti")
-      request.session[:user_id] = user.id
+      log_in(user)
       get :index, params: { company_id: company.id }
       expect(response.status).to eq(200)
       expect(response.body).to include("Applications")
@@ -35,6 +37,7 @@ RSpec.describe ApplicationsController, type: :controller do
       #                                  date: 9/25/2019,
       #                                  followup: false,
       #                                  response: nil)
+      log_in(user)
       get :new, params: { company_id: company.id }
       expect(response.status).to eq(200)
       expect(response.body).to include("Submit Application")

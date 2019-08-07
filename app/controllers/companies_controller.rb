@@ -1,7 +1,7 @@
 class CompaniesController < ApplicationController
   before_action :check_if_user_logged_in
   # only: [:new, :create, :show]
-  before_action :is_this_the_right_user?, only: [:new, :create, :show]
+  # before_action :is_this_the_right_user?, only: [:new, :create, :show]
 
 
   def index
@@ -9,8 +9,8 @@ class CompaniesController < ApplicationController
   end
 
   def new
+    @user = current_user
     @company = Company.new
-    @user = User.find_by(params[:id])
   end
 
   def create

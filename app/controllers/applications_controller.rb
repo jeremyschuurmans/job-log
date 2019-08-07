@@ -1,5 +1,5 @@
 class ApplicationsController < ApplicationController
-  # before_action :check_if_user_logged_in
+  before_action :check_if_user_logged_in
   # before_action :is_this_the_right_user?
 
   def index
