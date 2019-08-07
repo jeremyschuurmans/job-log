@@ -1,6 +1,9 @@
 <p>
 <%= @company.name %>
-<%= @company.address %>
+<%= @company.address['street_address'] %>
+<%= @company.address['city'] %>
+<%= @company.address['state'] %>
+<%= @company.address['zip'] %>
 <%= @company.telephone_number %>
 <%= @company.contact_person %>
 </p>

@@ -1,7 +1,6 @@
 <%= form_for @company, url: {action: "create"} do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>
-  <%= f.label :address %>
   <%= f.fields_for :address do |a| %>
     <%= a.label :street_address, "Street Address" %>
     <%= a.text_field :street_address %>
