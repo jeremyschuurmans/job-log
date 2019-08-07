@@ -24,26 +24,13 @@ class ApplicationsController < ApplicationController
   end
 
   def show
-    @application = Application.find_by(params[:id])
+    @application = Application.find_by(id: params[:id])
   end
 
   private
 
     def application_params
       params.require(:application).permit(:company_name, :date, :followup, :response)
-    end
-
-    def check_if_user_logged_in
-      unless logged_in?
-        set_forwarding_url
-        flash[:danger] = "Please log in to continue."
-        redirect_to login_url
-      end
-    end
-
-    def is_this_the_right_user?
-      @user = User.find(params[:id])
-      redirect_to root_url unless current_user?(@user)
     end
 
 end
