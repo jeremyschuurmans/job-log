@@ -14,7 +14,7 @@ class CompaniesController < ApplicationController
   end
 
   def create
-    @user = User.find_by(params[:id]) #change to current_user and create current_user method when this works
+    @user = current_user
     @company = @user.companies.build(company_params)
     if @company.save
       @user.companies << @company

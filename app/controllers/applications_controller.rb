@@ -10,7 +10,7 @@ class ApplicationsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(params[:id])
+    @user = current_user
     @company = Company.find_by(name: params[:application][:company_name])
     @application = Application.find_by(id: @company.id)
     @application.update(application_params)
