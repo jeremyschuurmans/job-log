@@ -2,8 +2,6 @@ Next steps (in no particular order):
 
 
 2. Format page title? Favicon.
-3. User model:
-    a. flesh out validations (case sensitivity, valid email structure, etc.)
 6. Style (Bootstrap?)
 7. Seed data
 8. Logos
