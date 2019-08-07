@@ -5,7 +5,8 @@ class CompaniesController < ApplicationController
 
 
   def index
-    @companies = Company.all
+    @user = current_user
+    @companies = @user.companies.all
   end
 
   def new
