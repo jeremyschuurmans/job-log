@@ -9,7 +9,6 @@ RSpec.describe User, :type => :model do
                          password: "securepassword")
 
       expect(user).to be_valid
-      user.delete
     end
 
     it 'is invalid without a name' do
@@ -18,7 +17,6 @@ RSpec.describe User, :type => :model do
                          password: "securepassword")
 
       expect(user).to be_invalid
-      user.delete
     end
 
     it 'is invalid without an email' do
@@ -27,7 +25,6 @@ RSpec.describe User, :type => :model do
                          password: "secure_password")
 
       expect(user).to be_invalid
-      user.delete
     end
 
     it 'is invalid without a password' do
@@ -36,7 +33,6 @@ RSpec.describe User, :type => :model do
                          password: "")
 
       expect(user).to be_invalid
-      user.delete
     end
 
     it 'has a secure password' do

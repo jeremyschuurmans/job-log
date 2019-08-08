@@ -11,7 +11,10 @@ RSpec.describe ApplicationsController, type: :controller do
                          email: "admiralgrace@googlemail.com",
                          password: "securepassword")
       company = Company.create(name: "Pied Piper",
-                               address: "12341234 Recursion Way",
+                               address: { :street_address =>  "12341234 Recursion Way",
+                                          :city => "Portland",
+                                          :state => "Oregon",
+                                          :zip_code => 97224 },
                                telephone_number: 555-555-5555,
                                contact_person: "Nelson Bighetti")
       log_in(user)
@@ -30,7 +33,10 @@ RSpec.describe ApplicationsController, type: :controller do
                          email: "admiralgrace@googlemail.com",
                          password: "securepassword")
       company = Company.create(name: "Pied Piper",
-                               address: "12341234 Recursion Way",
+                               address: { :street_address =>  "12341234 Recursion Way",
+                                          :city => "Portland",
+                                          :state => "Oregon",
+                                          :zip_code => 97224 },
                                telephone_number: 555-555-5555,
                                contact_person: "Nelson Bighetti")
       # application = Application.create(company_name: "Pied Piper",

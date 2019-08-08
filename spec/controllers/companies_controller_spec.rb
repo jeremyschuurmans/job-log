@@ -1,9 +1,9 @@
 require 'rails_helper'
+include UsersHelper
+include SessionsHelper
 
 RSpec.describe CompaniesController, type: :controller do
   render_views
-  include UsersHelper
-  include SessionsHelper
 
   describe "Index" do
     it "loads the companies index page" do

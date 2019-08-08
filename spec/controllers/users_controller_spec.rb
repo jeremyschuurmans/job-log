@@ -24,8 +24,7 @@ RSpec.describe UsersController, type: :controller do
                          password: "securepassword")
 
       expect(user).to_not be_a_new(User)
-      expect(user.id).to eq(1)
-      expect(user.id).to_not eq(2)
+      expect(user).to be_an_instance_of(User)
     end
   end
 end
