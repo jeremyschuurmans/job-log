@@ -3,6 +3,7 @@
   <%= f.date_field :date %>
   <%= f.radio_button :followup, "Followed Up?" %>
   <%= f.text_area :response %>
-  <%#= f.hidden_field :application, @application.id %>
   <%= f.submit "Submit Application" %>
 <% end %>
+
+<%= link_to("Sign Out", logout_path, method: :delete) %>

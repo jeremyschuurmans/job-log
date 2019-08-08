@@ -2,3 +2,7 @@
 <%= @application.date %>
 <%= @application.followup %>
 <%= @application.response %>
+
+<%= link_to("Sign Out", logout_path, method: :delete) %>
+<%= link_to("Companies", companies_path) %>
+<%= link_to("Applications", applications_path) %>
