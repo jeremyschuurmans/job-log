@@ -3,6 +3,8 @@ class ApplicationsController < ApplicationController
   # before_action :is_this_the_right_user?
 
   def index
+    @user = current_user
+    @applications = @user.applications.all
   end
 
   def new
