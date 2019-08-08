@@ -6,6 +6,7 @@ class ApplicationsController < ApplicationController
   end
 
   def new
+    @user = current_user
     @application = Application.new
   end
 
