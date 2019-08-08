@@ -44,7 +44,7 @@ RSpec.feature "CreateApplications", type: :feature do
       expect(user.applications.last.company_name).to eq("Planet Argon")
       expect(Company.last.applications.last.company_name).to eq("Planet Argon")
       expect(User.last.applications.count).to eq(1)
-      expect(current_path).to eq('/companies/1/applications/1')
+      expect(current_path).to eq('/companies/3/applications/1')
       expect(page).to have_content('Planet Argon')
     end
   end

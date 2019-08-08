@@ -6,12 +6,15 @@ RSpec.describe Company, type: :model do
                        email: "admiralgrace@googlemail.com",
                        password: "securepassword")
 
-    application = Application.create(company_name: "Codeco", date: 06/29/2019, followup: false)
+    application = Application.create(company_name: "Codeco", date: "2019-06-29", followup: false)
 
-    company = Company.create(name: "Codeco",
-                             address: "123 Avenue St",
-                             telephone_number: "503-555-5555",
-                             contact_person: "Steve Jobs")
+    company = Company.create(name: "Pied Piper",
+                             address: { :street_address =>  "12341234 Recursion Way",
+                                        :city => "Portland",
+                                        :state => "Oregon",
+                                        :zip_code => 97224 },
+                             telephone_number: 555-555-5555,
+                             contact_person: "Nelson Bighetti")
 
     expect(company).to be_valid
   end
@@ -21,12 +24,15 @@ RSpec.describe Company, type: :model do
                        email: "admiralgrace@googlemail.com",
                        password: "securepassword")
 
-    application = Application.create(company_name: "Codeco", date: 06/29/2019, followup: false)
+    application = Application.create(company_name: "Codeco", date: "2019-06-29", followup: false)
 
     company = Company.create(name: "",
-                             address: "123 Avenue St",
-                             telephone_number: "503-555-5555",
-                             contact_person: "Steve Jobs")
+                             address: { :street_address =>  "12341234 Recursion Way",
+                                        :city => "Portland",
+                                        :state => "Oregon",
+                                        :zip_code => 97224 },
+                             telephone_number: 555-555-5555,
+                             contact_person: "Nelson Bighetti")
 
     expect(company).to be_invalid
   end
@@ -36,12 +42,12 @@ RSpec.describe Company, type: :model do
                        email: "admiralgrace@googlemail.com",
                        password: "securepassword")
 
-    application = Application.create(company_name: "Codeco", date: 06/29/2019, followup: false)
+    application = Application.create(company_name: "Codeco", date: "2019-06-29", followup: false)
 
-    company = Company.create(name: "Codeco",
-                             address: "",
-                             telephone_number: "503-555-5555",
-                             contact_person: "Steve Jobs")
+    company = Company.create(name: "Pied Piper",
+                             address: {},
+                             telephone_number: 555-555-5555,
+                             contact_person: "Nelson Bighetti")
 
     expect(company).to be_invalid
   end
@@ -51,12 +57,15 @@ RSpec.describe Company, type: :model do
                        email: "admiralgrace@googlemail.com",
                        password: "securepassword")
 
-    application = Application.create(company_name: "Codeco", date: 06/29/2019, followup: false)
+    application = Application.create(company_name: "Codeco", date: "2019-06-29", followup: false)
 
-    company = Company.create(name: "Codeco",
-                             address: "123 Avenue St",
+    company = Company.create(name: "Pied Piper",
+                             address: { :street_address =>  "12341234 Recursion Way",
+                                        :city => "Portland",
+                                        :state => "Oregon",
+                                        :zip_code => 97224 },
                              telephone_number: "",
-                             contact_person: "Steve Jobs")
+                             contact_person: "Nelson Bighetti")
 
      expect(company).to be_invalid
    end
@@ -66,11 +75,14 @@ RSpec.describe Company, type: :model do
                        email: "admiralgrace@googlemail.com",
                        password: "securepassword")
 
-    application = Application.create(company_name: "Codeco", date: 06/29/2019, followup: false)
+    application = Application.create(company_name: "Codeco", date: "2019-06-29", followup: false)
 
-    company = Company.create(name: "Codeco",
-                             address: "123 Avenue St",
-                             telephone_number: "503-555-5555",
+    company = Company.create(name: "Pied Piper",
+                             address: { :street_address =>  "12341234 Recursion Way",
+                                        :city => "Portland",
+                                        :state => "Oregon",
+                                        :zip_code => 97224 },
+                             telephone_number: 555-555-5555,
                              contact_person: "")
 
      expect(company).to be_invalid

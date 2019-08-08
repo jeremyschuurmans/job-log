@@ -12,7 +12,7 @@ class ApplicationsController < ApplicationController
   def create
     @user = current_user
     @company = Company.find_by(name: params[:application][:company_name])
-    @application = Application.find_by(id: @company.id)
+    @application = Application.find_by(company_id: @company.id)
     @application.update(application_params)
     if @application.save
       redirect_to company_application_url(id: @application.id)

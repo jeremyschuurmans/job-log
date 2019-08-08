@@ -16,9 +16,12 @@ RSpec.feature "CreateCompanies", type: :feature do
       click_link 'Add a New Company'
 
       expect(current_path).to eq('/companies/new')
-      expect(page).to have_content("Name Address Phone Contact Person")
+      expect(page).to have_content("Name Street Address City State Zip Phone Contact Person")
       fill_in 'company_name', with: "Planet Argon"
-      fill_in 'company_address', with: "3530 N Vancouver Ave, Suite 300, Portland, OR 97227"
+      fill_in 'company_address_street_address', with: "3530 N Vancouver Ave, Suite 300"
+      fill_in 'company_address_city', with: "Portland"
+      fill_in 'company_address_state', with: "OR"
+      fill_in 'company_address_zip_code', with: 97227
       fill_in 'company_telephone_number', with: 503-847-9214
       fill_in 'company_contact_person', with: "Robby Russell"
       click_button 'Submit Company'

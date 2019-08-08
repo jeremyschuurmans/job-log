@@ -51,23 +51,29 @@ RSpec.describe User, :type => :model do
                          email: "admiralgrace@googlemail.com",
                          password: "password")
 
-      company_1 = Company.create(name: "Codeco",
-                                 address: "123 Avenue St",
-                                 telephone_number: "503-555-5555",
-                                 contact_person: "Steve Jobs")
+      company_1 = Company.create(name: "Pied Piper",
+                                 address: { :street_address =>  "12341234 Recursion Way",
+                                            :city => "Portland",
+                                            :state => "Oregon",
+                                            :zip_code => 97224 },
+                                 telephone_number: 555-555-5555,
+                                 contact_person: "Nelson Bighetti")
 
       company_2 = Company.create(name: "Braeburn",
-                                 address: "123 Apple St",
+                                 address: { :street_address =>  "22 Boolean Ave",
+                                            :city => "Gresham",
+                                            :state => "Oregon",
+                                            :zip_code => 97210 },
                                  telephone_number: "503-555-5555",
                                  contact_person: "Steve Gates")
 
       user.companies << [company_1, company_2]
 
-      application_1 = Application.find_by(id: company_1.id)
-      application_1.update(company_name: "Codeco", date: 06/29/2019, followup: false)
+      application_1 = Application.find_by(company_id: company_1.id)
+      application_1.update(company_name: "Pied Piper", date: "2019-06-29", followup: false)
 
-      application_2 = Application.find_by(id: company_2.id)
-      application_2.update(company_name: "Braeburn", date: 06/29/2019, followup: false)
+      application_2 = Application.find_by(company_id: company_2.id)
+      application_2.update(company_name: "Braeburn", date: "2019-06-29", followup: false)
 
       expect(user.applications.first).to eq(application_1)
       expect(user.applications.last).to eq(application_2)
@@ -78,13 +84,19 @@ RSpec.describe User, :type => :model do
                          email: "admiralgrace@googlemail.com",
                          password: "password")
 
-      company_1 = Company.create(name: "Codeco",
-                                 address: "123 Avenue St",
-                                 telephone_number: "503-555-5555",
-                                 contact_person: "Steve Jobs")
+      company_1 = Company.create(name: "Pied Piper",
+                                 address: { :street_address =>  "12341234 Recursion Way",
+                                            :city => "Portland",
+                                            :state => "Oregon",
+                                            :zip_code => 97224 },
+                                 telephone_number: 555-555-5555,
+                                 contact_person: "Nelson Bighetti")
 
       company_2 = Company.create(name: "Braeburn",
-                                 address: "123 Apple St",
+                                 address: { :street_address =>  "22 Boolean Ave",
+                                            :city => "Gresham",
+                                            :state => "Oregon",
+                                            :zip_code => 97210 },
                                  telephone_number: "503-555-5555",
                                  contact_person: "Steve Gates")
 
