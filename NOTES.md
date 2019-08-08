@@ -11,6 +11,5 @@ Next steps (in no particular order):
 12. Order applications by date in applications index
 13. Third-party authentication and fix for omniauth vulnerability
 14. Add dynamic features with JS
-15. Links
 
 Get it working completely. Worry about styling last.
