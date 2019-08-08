@@ -4,7 +4,7 @@
 <%= @company.address['city'] %>
 <%= @company.address['state'] %>
 <%= @company.address['zip'] %>
-<%= @company.telephone_number %>
+<%= number_to_phone(company.telephone_number) %>
 <%= @company.contact_person %>
 </p>
 
