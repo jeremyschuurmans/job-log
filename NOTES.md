@@ -5,7 +5,7 @@ Next steps (in no particular order):
 6. Style (Bootstrap?)
 
 8. Logos
-9. Telephone number formatting
+
 
 11. Edit actions/forms
 12. Order applications by date in applications index
