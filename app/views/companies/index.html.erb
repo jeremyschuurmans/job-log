@@ -4,6 +4,7 @@
 <% end %>
 
 <% @companies.each do |company| %>
+  <img src="https://logo.clearbit.com/<%= company.company_url %>">
   <%= link_to company.name, company_path(company) %>
   <%= company.address['street_address'] %>
   <%= company.address['city'] %>
