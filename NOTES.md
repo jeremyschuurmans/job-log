@@ -1,8 +1,8 @@
 Next steps (in no particular order):
 
 
-2. Format page title? Favicon.
-6. Style (Bootstrap?)
+
+6. Style (Bootstrap? Favicon)
 
 8. Logos
 
