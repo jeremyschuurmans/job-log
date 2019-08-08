@@ -4,7 +4,7 @@ class ApplicationsController < ApplicationController
 
   def index
     @user = current_user
-    @applications = @user.applications.all
+    @applications = @user.applications.all.order_by(&:date)
   end
 
   def new
