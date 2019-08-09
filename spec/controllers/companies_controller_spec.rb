@@ -105,17 +105,16 @@ RSpec.describe CompaniesController, type: :controller do
                          password: "securepassword")
 
       company = user.companies.create(name: "Pied Piper",
-                               address: { :street_address =>  "12341234 Recursion Way",
-                                          :city => "Portland",
-                                          :state => "Oregon",
-                                          :zip_code => 97224 },
-                               telephone_number: 555-555-5555,
-                               contact_person: "Nelson Bighetti")
+                                      address: { :street_address =>  "12341234 Recursion Way",
+                                                 :city => "Portland",
+                                                 :state => "Oregon",
+                                                 :zip_code => 97224 },
+                                      telephone_number: 555-555-5555,
+                                      contact_person: "Nelson Bighetti")
 
       log_in(user)
       delete :destroy, params: { id: company.id }
       expect(flash[:success]).to eq("Company deleted!")
-
     end
   end
 end
