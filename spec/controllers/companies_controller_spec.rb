@@ -104,7 +104,7 @@ RSpec.describe CompaniesController, type: :controller do
                          email: "admiralgrace@googlemail.com",
                          password: "securepassword")
 
-      company = Company.create(name: "Pied Piper",
+      company = user.companies.create(name: "Pied Piper",
                                address: { :street_address =>  "12341234 Recursion Way",
                                           :city => "Portland",
                                           :state => "Oregon",
@@ -114,7 +114,8 @@ RSpec.describe CompaniesController, type: :controller do
 
       log_in(user)
       delete :destroy, params: { id: company.id }
-      expect(company.id).to eq(nil)
+      expect(flash[:success]).to eq("Company deleted!")
+
     end
   end
 end
