@@ -17,4 +17,9 @@ module UsersHelper
     @company = current_user.companies.find_by(id: params[:id])
     redirect_to root_url if @company.nil?
   end
+
+  def does_this_application_belong_to_this_user?
+    @application = current_user.applications.find_by(id: params[:id])
+    redirect_to root_url if @application.nil?
+  end
 end

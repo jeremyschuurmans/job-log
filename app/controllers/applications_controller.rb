@@ -1,6 +1,6 @@
 class ApplicationsController < ApplicationController
   before_action :check_if_user_logged_in
-  # before_action :is_this_the_right_user?
+  before_action :does_this_application_belong_to_this_user?, only: [:show, :edit, :update, :delete]
 
   def index
     @user = current_user
