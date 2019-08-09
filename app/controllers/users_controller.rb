@@ -21,6 +21,21 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = current_user
+  end
+
+  def update
+    @user = current_user
+    if @user.update(user_params)
+      flash[:success] = "Information updated!"
+      redirect_to companies_url
+    else
+      flash[:danger] = "Something went wrong."
+      redirect_to edit_user_url(@user)
+    end
+  end
+
   private
 
     def user_params
