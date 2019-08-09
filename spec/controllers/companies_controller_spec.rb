@@ -49,7 +49,7 @@ RSpec.describe CompaniesController, type: :controller do
                             contact_person: "Nelson Bighetti")
 
       expect(company.name).to eq("Pied Piper")
-      expect(company.id).to eq(4)
+      expect(company.id).to eq(6)
     end
   end
 
