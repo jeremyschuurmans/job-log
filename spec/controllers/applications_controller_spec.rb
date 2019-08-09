@@ -10,6 +10,7 @@ RSpec.describe ApplicationsController, type: :controller do
       user = User.create(name: "Grace Hopper",
                          email: "admiralgrace@googlemail.com",
                          password: "securepassword")
+
       company = Company.create(name: "Pied Piper",
                                address: { :street_address =>  "12341234 Recursion Way",
                                           :city => "Portland",
@@ -29,6 +30,7 @@ RSpec.describe ApplicationsController, type: :controller do
       user = User.create(name: "Grace Hopper",
                          email: "admiralgrace@googlemail.com",
                          password: "securepassword")
+
       company = Company.create(name: "Pied Piper",
                                address: { :street_address =>  "12341234 Recursion Way",
                                           :city => "Portland",
@@ -55,6 +57,7 @@ RSpec.describe ApplicationsController, type: :controller do
       user = User.create(name: "Grace Hopper",
                          email: "admiralgrace@googlemail.com",
                          password: "securepassword")
+
       company = user.companies.create(name: "Pied Piper",
                                       address: { :street_address =>  "12341234 Recursion Way",
                                                  :city => "Portland",
@@ -72,6 +75,29 @@ RSpec.describe ApplicationsController, type: :controller do
       application.update(company_name: company.name, date: "2019-10-22")
       expect(Application.last.company_id).to eq(company.id)
       expect(Application.last.company_name).to eq(company.name)
+    end
+  end
+
+  describe "Edit" do
+    it "can edit an application's information" do
+      user = User.create(name: "Grace Hopper",
+                         email: "admiralgrace@googlemail.com",
+                         password: "securepassword")
+
+      company = user.companies.create(name: "Pied Piper",
+                                      address: { :street_address =>  "12341234 Recursion Way",
+                                                 :city => "Portland",
+                                                 :state => "Oregon",
+                                                 :zip_code => 97224 },
+                                      telephone_number: 555-555-5555,
+                                      contact_person: "Nelson Bighetti")
+
+      application = Application.find_by(company_id: company.id)
+
+      log_in(user)
+      patch :update, params: { company_id: company.id, id: application.id, application: { company_name: "Pied Piper" } }
+      application.reload
+      expect(application.company_name).to eq("Pied Piper")
     end
   end
 end
