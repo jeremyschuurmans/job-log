@@ -77,5 +77,23 @@ RSpec.describe CompaniesController, type: :controller do
     end
   end
 
-  
+  describe "Edit" do
+    it "can edit a company's information" do
+      user = User.create(name: "Grace Hopper",
+                         email: "admiralgrace@googlemail.com",
+                         password: "securepassword")
+
+      company = Company.create(name: "Pied Piper",
+                               address: { :street_address =>  "12341234 Recursion Way",
+                                          :city => "Portland",
+                                          :state => "Oregon",
+                                          :zip_code => 97224 },
+                               telephone_number: 555-555-5555,
+                               contact_person: "Nelson Bighetti")
+
+      log_in(user)
+      patch :update, params: { id: company.id, name: "Apple Computer" }
+      expect(company.name).to eq("Apple Computer")
+    end
+  end
 end
