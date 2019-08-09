@@ -42,7 +42,20 @@ class CompaniesController < ApplicationController
       flash[:success] = "Company edited!"
       redirect_to @company
     else
-      redirect_back(fallback_location: companies_url)
+      flash[:danger] = "Company not edited."
+      redirect_to edit_company_url(@company)
+    end
+  end
+
+  def destroy
+    @user = current_user
+    @company = Company.find(params[:id])
+    if @company.destroy
+      flash[:success] = "Company deleted!"
+      redirect_to companies_url
+    else
+      flash[:danger] = "Company not deleted!"
+      redirect_to @company
     end
   end
 

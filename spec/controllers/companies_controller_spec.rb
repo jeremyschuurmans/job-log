@@ -97,4 +97,24 @@ RSpec.describe CompaniesController, type: :controller do
       expect(company.name).to eq("Apple Computer")
     end
   end
+
+  describe "Delete" do
+    it "deletes a company from the database" do
+      user = User.create(name: "Grace Hopper",
+                         email: "admiralgrace@googlemail.com",
+                         password: "securepassword")
+
+      company = Company.create(name: "Pied Piper",
+                               address: { :street_address =>  "12341234 Recursion Way",
+                                          :city => "Portland",
+                                          :state => "Oregon",
+                                          :zip_code => 97224 },
+                               telephone_number: 555-555-5555,
+                               contact_person: "Nelson Bighetti")
+
+      log_in(user)
+      delete :destroy, params: { id: company.id }
+      expect(company.id).to eq(nil)
+    end
+  end
 end
