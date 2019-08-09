@@ -31,4 +31,10 @@ RSpec.describe SessionsController, type: :controller do
     delete :destroy, params: { session: { user_id: user.id } }
     expect(session[:user_id]).to eq(nil)
   end
+
+  it "can create a session via omniauth" do
+    request.env['omniauth.auth'] = OmniAuth.config.mock_auth[:github]
+
+    expect(post :create, provider: :github).to change(User.count).by(1)
+  end
 end

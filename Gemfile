@@ -43,6 +43,7 @@ group :development, :test do
   gem 'capybara', '>= 2.15'
   gem 'faker', '>= 2.1.0'
   gem 'pry'
+  gem 'omniauth-github'
 end
 
 group :development do

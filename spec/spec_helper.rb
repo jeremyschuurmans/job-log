@@ -15,6 +15,18 @@
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
 require 'capybara/rspec'
+require 'omniauth'
+
+OmniAuth.config.test_mode = true
+omniauth_data = { 'provider' => 'github',
+                  'uid' => '54321',
+                  'info' => {
+                      'name' => 'John Smith',
+                      'email' => 'john@googlemail.com'
+                    }
+}
+
+OmniAuth.config.add_mock(:github, omniauth_data)
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
