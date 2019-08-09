@@ -7,5 +7,5 @@
   <%= f.submit 'Sign Up' %>
 <% end %>
 
-<%= link_to("Log In", login_path) %>
-<%= link_to("Sign Up With GitHub", '/auth/github') %>
+<%= link_to('Log In', login_path) %>
+<%= link_to('Sign Up With GitHub', '/auth/github', method: :post) %>
