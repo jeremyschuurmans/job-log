@@ -33,8 +33,8 @@ RSpec.describe SessionsController, type: :controller do
   end
 
   it "can create a session via omniauth" do
-    request.env['omniauth.auth'] = OmniAuth.config.mock_auth[:github]
+    Rails.application.env_config['omniauth.auth'] = OmniAuth.config.mock_auth[:github]
 
-    expect(post :create, provider: :github).to change(User.count).by(1)
+    expect(post :create, provider: :github).to change { User.count }.by(1)
   end
 end
