@@ -19,16 +19,31 @@ class CompaniesController < ApplicationController
     @company = @user.companies.build(company_params)
     if @company.save
       @user.companies << @company
+      flash[:success] = "Success!"
       redirect_to @company
-      flash[:notice] = "Success!"
     else
+      flash[:danger] = "Company not saved."
       render 'new'
-      flash[:alert] = "Company not saved."
     end
   end
 
   def show
     @company = Company.find(params[:id])
+  end
+
+  def edit
+    @company = Company.find(params[:id])
+  end
+
+  def update
+    @user = current_user
+    @company = Company.find(params[:id])
+    if @company.update(company_params)
+      flash[:success] = "Company edited!"
+      redirect_to @company
+    else
+      redirect_back(fallback_location: companies_url)
+    end
   end
 
   private

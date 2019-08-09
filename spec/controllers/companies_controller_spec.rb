@@ -92,7 +92,8 @@ RSpec.describe CompaniesController, type: :controller do
                                contact_person: "Nelson Bighetti")
 
       log_in(user)
-      patch :update, params: { id: company.id, name: "Apple Computer" }
+      patch :update, params: { id: company.id, company: { name: "Apple Computer" } }
+      company.reload
       expect(company.name).to eq("Apple Computer")
     end
   end
