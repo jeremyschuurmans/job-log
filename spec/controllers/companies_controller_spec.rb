@@ -102,12 +102,12 @@ RSpec.describe CompaniesController, type: :controller do
                          password: "securepassword")
 
       company = Company.create(name: "Pied Piper",
-                                      address: { :street_address =>  "12341234 Recursion Way",
-                                                 :city => "Portland",
-                                                 :state => "Oregon",
-                                                 :zip_code => 97224 },
-                                      telephone_number: 555-555-5555,
-                                      contact_person: "Nelson Bighetti")
+                               address: { :street_address =>  "12341234 Recursion Way",
+                                          :city => "Portland",
+                                          :state => "Oregon",
+                                          :zip_code => 97224 },
+                               telephone_number: 555-555-5555,
+                               contact_person: "Nelson Bighetti")
 
       log_in(user)
       user.companies << company
