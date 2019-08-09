@@ -6,8 +6,6 @@ RSpec.describe Company, type: :model do
                        email: "admiralgrace@googlemail.com",
                        password: "securepassword")
 
-    application = Application.create(company_name: "Codeco", date: "2019-06-29", followup: false)
-
     company = Company.create(name: "Pied Piper",
                              address: { :street_address =>  "12341234 Recursion Way",
                                         :city => "Portland",
@@ -23,8 +21,6 @@ RSpec.describe Company, type: :model do
     user = User.create(name: "Grace Hopper",
                        email: "admiralgrace@googlemail.com",
                        password: "securepassword")
-
-    application = Application.create(company_name: "Codeco", date: "2019-06-29", followup: false)
 
     company = Company.create(name: "",
                              address: { :street_address =>  "12341234 Recursion Way",
@@ -42,8 +38,6 @@ RSpec.describe Company, type: :model do
                        email: "admiralgrace@googlemail.com",
                        password: "securepassword")
 
-    application = Application.create(company_name: "Codeco", date: "2019-06-29", followup: false)
-
     company = Company.create(name: "Pied Piper",
                              address: {},
                              telephone_number: 555-555-5555,
@@ -56,8 +50,6 @@ RSpec.describe Company, type: :model do
     user = User.create(name: "Grace Hopper",
                        email: "admiralgrace@googlemail.com",
                        password: "securepassword")
-
-    application = Application.create(company_name: "Codeco", date: "2019-06-29", followup: false)
 
     company = Company.create(name: "Pied Piper",
                              address: { :street_address =>  "12341234 Recursion Way",
@@ -74,8 +66,6 @@ RSpec.describe Company, type: :model do
     user = User.create(name: "Grace Hopper",
                        email: "admiralgrace@googlemail.com",
                        password: "securepassword")
-
-    application = Application.create(company_name: "Codeco", date: "2019-06-29", followup: false)
 
     company = Company.create(name: "Pied Piper",
                              address: { :street_address =>  "12341234 Recursion Way",
