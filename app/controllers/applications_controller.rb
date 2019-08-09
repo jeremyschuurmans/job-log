@@ -13,7 +13,6 @@ class ApplicationsController < ApplicationController
   end
 
   def create
-    @user = current_user
     @company = Company.find_by(name: params[:application][:company_name])
     @application = Application.find_by(company_id: @company.id)
     @application.update(application_params)
@@ -35,7 +34,6 @@ class ApplicationsController < ApplicationController
   end
 
   def update
-    @user = current_user
     @application = Application.find(params[:id])
     if @application.update(application_params)
       flash[:success] = "Application edited!"
@@ -43,6 +41,17 @@ class ApplicationsController < ApplicationController
     else
       flash[:danger] = "Application not edited."
       redirect_to edit_company_application_url(@application)
+    end
+  end
+
+  def destroy
+    @application = Application.find(params[:id])
+    if @application.destroy
+      flash[:success] = "Application deleted!"
+      redirect_to applications_url
+    else
+      flash[:danger] = "Application not deleted."
+      redirect_to company_application_url(@application)
     end
   end
 

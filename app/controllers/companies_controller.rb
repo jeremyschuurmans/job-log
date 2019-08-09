@@ -35,7 +35,6 @@ class CompaniesController < ApplicationController
   end
 
   def update
-    @user = current_user
     @company = Company.find(params[:id])
     if @company.update(company_params)
       flash[:success] = "Company edited!"
@@ -47,7 +46,6 @@ class CompaniesController < ApplicationController
   end
 
   def destroy
-    @user = current_user
     @company = Company.find(params[:id])
     if @company.destroy
       flash[:success] = "Company deleted!"

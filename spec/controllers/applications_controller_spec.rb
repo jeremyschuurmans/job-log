@@ -100,4 +100,26 @@ RSpec.describe ApplicationsController, type: :controller do
       expect(application.company_name).to eq("Pied Piper")
     end
   end
+
+  describe "Delete" do
+    it "can delete an application" do
+      user = User.create(name: "Grace Hopper",
+                         email: "admiralgrace@googlemail.com",
+                         password: "securepassword")
+
+      company = user.companies.create(name: "Pied Piper",
+                                      address: { :street_address =>  "12341234 Recursion Way",
+                                                 :city => "Portland",
+                                                 :state => "Oregon",
+                                                 :zip_code => 97224 },
+                                      telephone_number: 555-555-5555,
+                                      contact_person: "Nelson Bighetti")
+
+      application = Application.find_by(company_id: company.id)
+
+      log_in(user)
+      delete :destroy, params: { company_id: company.id, id: application.id }
+      expect(flash[:success]).to eq("Application deleted!")
+    end
+  end
 end
