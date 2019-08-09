@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   get '/applications', to: 'applications#index'
 
+  resources :users, except: [:index, :new, :create, :show, :destroy]
+
   resources :companies do
     resources :applications, except: [:index]
   end
