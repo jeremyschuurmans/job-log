@@ -6,7 +6,16 @@ class SessionsController < ApplicationController
 
   def create
     if auth
-      login_or_create_user_via_omniauth
+      @user = User.find_by(email: auth['info']['email'])
+      if @user
+        log_in @user
+        redirect_to companies_url
+      else
+        password = SecureRandom.urlsafe_base64
+        @user = User.create(name: auth['info']['name'], email: auth['info']['email'], password: password)
+        log_in @user
+        redirect_to companies_url
+      end
     else
       @user = User.find_by(email: params[:session][:email])
       if @user && @user.authenticate(params[:session][:password])
@@ -30,16 +39,4 @@ class SessionsController < ApplicationController
       Rails.application.env_config['omniauth.auth']
     end
 
-    def login_or_create_user_via_omniauth
-      @user = User.find_by(email: auth['info']['email'])
-      if @user
-        log_in @user
-        redirect_to companies_url
-      else
-        password = SecureRandom.urlsafe_base64
-        @user = User.create(name: auth['info']['name'], email: auth['info']['email'], password: password)
-        log_in @user
-        redirect_to companies_url
-      end
-    end
 end
