@@ -3,7 +3,6 @@ Next steps (in no particular order):
 
 
 6. Style (Bootstrap? Favicon)
-13. Third-party authentication and fix for omniauth vulnerability
 14. Add dynamic features with JS
 
 Get it working completely. Worry about styling last.
