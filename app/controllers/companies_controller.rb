@@ -1,7 +1,6 @@
 class CompaniesController < ApplicationController
   before_action :check_if_user_logged_in
-  # only: [:new, :create, :show]
-  # before_action :is_this_the_right_user?, only: [:new, :create, :show]
+  before_action :does_this_company_belong_to_this_user?, only: [:show, :edit, :update, :destroy]
 
 
   def index
@@ -28,10 +27,12 @@ class CompaniesController < ApplicationController
   end
 
   def show
+    @user = current_user
     @company = Company.find(params[:id])
   end
 
   def edit
+    @user = current_user
     @company = Company.find(params[:id])
   end
 

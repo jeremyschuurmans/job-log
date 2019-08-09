@@ -22,9 +22,6 @@ RSpec.describe ApplicationsController, type: :controller do
       expect(response.status).to eq(200)
       expect(response.body).to include("Applications")
     end
-
-    it "displays all applications" do
-    end
   end
 
   describe "New" do
@@ -39,10 +36,7 @@ RSpec.describe ApplicationsController, type: :controller do
                                           :zip_code => 97224 },
                                telephone_number: 555-555-5555,
                                contact_person: "Nelson Bighetti")
-      # application = Application.create(company_name: "Pied Piper",
-      #                                  date: 9/25/2019,
-      #                                  followup: false,
-      #                                  response: nil)
+
       log_in(user)
       get :new, params: { company_id: company.id }
       expect(response.status).to eq(200)
