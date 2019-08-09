@@ -30,6 +30,22 @@ class ApplicationsController < ApplicationController
     @application = Application.find_by(id: params[:id])
   end
 
+  def edit
+    @application = Application.find_by(id: params[:id])
+  end
+
+  def update
+    @user = current_user
+    @application = Application.find(params[:id])
+    if @application.update(application_params)
+      flash[:success] = "Application edited!"
+      redirect_to company_application_url(@application)
+    else
+      flash[:danger] = "Application not edited."
+      redirect_to edit_company_application_url(@application)
+    end
+  end
+
   private
 
     def application_params

@@ -27,12 +27,10 @@ class CompaniesController < ApplicationController
   end
 
   def show
-    @user = current_user
     @company = Company.find(params[:id])
   end
 
   def edit
-    @user = current_user
     @company = Company.find(params[:id])
   end
 
