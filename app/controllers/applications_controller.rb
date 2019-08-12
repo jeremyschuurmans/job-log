@@ -5,7 +5,10 @@ class ApplicationsController < ApplicationController
   def index
     @user = current_user
     @applications = @user.applications.all.order(:date)
-    render json: @applications
+    respond_to do |format|
+      format.html
+      format.json { render json: @applications }
+    end
   end
 
   def new
