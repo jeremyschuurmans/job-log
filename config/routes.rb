@@ -12,6 +12,6 @@ Rails.application.routes.draw do
   resources :users, except: [:index, :new, :create, :show, :destroy]
 
   resources :companies do
-    resources :applications, except: [:index]
+    resources :applications, except: [:index, :new, :create]
   end
 end

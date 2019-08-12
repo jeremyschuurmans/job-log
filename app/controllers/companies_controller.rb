@@ -18,6 +18,7 @@ class CompaniesController < ApplicationController
     @company = @user.companies.build(company_params)
     if @company.save
       @user.companies << @company
+      find_and_update_associated_application
       flash[:success] = "Success!"
       redirect_to @company
     else
@@ -60,5 +61,11 @@ class CompaniesController < ApplicationController
 
     def company_params
       params.require(:company).permit(:name, :telephone_number, :contact_person, address: [:street_address, :city, :state, :zip_code])
+    end
+
+    def find_and_update_associated_application
+      @application = Application.find_by(company_id: @company.id)
+      @application.company_name = @company.name
+      @application.save
     end
 end

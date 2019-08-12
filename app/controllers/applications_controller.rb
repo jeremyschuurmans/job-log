@@ -11,39 +11,22 @@ class ApplicationsController < ApplicationController
     end
   end
 
-  def new
-    @user = current_user
-    @application = Application.new
-  end
-
-  def create
-    @company = Company.find_by(name: params[:application][:company_name])
-    @application = Application.find_by(company_id: @company.id)
-    @application.update(application_params)
-    if @application.save
-      redirect_to company_application_url(id: @application.id)
-      flash[:notice] = "Success!"
-    else
-      render 'new'
-      flash[:alert] = "Application not saved."
-    end
-  end
-
   def show
     @application = Application.find_by(id: params[:id])
   end
 
   def edit
+    @company = Company.find_by(id: params[:id])
     @application = Application.find_by(id: params[:id])
   end
 
   def update
     @application = Application.find(params[:id])
     if @application.update(application_params)
-      flash[:success] = "Application edited!"
+      flash[:success] = "Success!"
       redirect_to company_application_url(@application)
     else
-      flash[:danger] = "Application not edited."
+      flash[:danger] = "Something went wrong."
       redirect_to edit_company_application_url(@application)
     end
   end
