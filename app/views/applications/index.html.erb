@@ -1,3 +1,9 @@
 <h1>Applications</h1>
 
+<ul>
+<% @applications.each do |application| %>
+  <li><%= application.company_name %></li>
+  <li><%= application.date %></li>
+<% end %>
+</ul>
 <%= link_to("Sign Out", logout_path, method: :delete) %>

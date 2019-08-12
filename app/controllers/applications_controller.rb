@@ -4,7 +4,7 @@ class ApplicationsController < ApplicationController
 
   def index
     @user = current_user
-    @applications = @user.applications.all.order(date: :desc).limit(3)
+    @applications = @user.applications.all
     respond_to do |format|
       format.html
       format.json { render json: @applications }
