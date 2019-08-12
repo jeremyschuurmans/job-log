@@ -2,8 +2,9 @@
 
 <ul>
 <% @applications.each do |application| %>
-  <li><%= application.company_name %>
+  <li><%= link_to application.company_name, company_application_path(application.company_id, application.id) %>
   <%= application.date %></li>
 <% end %>
 </ul>
+<%= link_to("Companies", companies_path) %>
 <%= link_to("Sign Out", logout_path, method: :delete) %>
