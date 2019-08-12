@@ -6,6 +6,7 @@ Next steps (in no particular order):
 14. Add dynamic features with JS
  - View next company button on company show page
  - Add a new company on new company form
- - View all applications on applications 
+ - View all applications on applications
+15. add error messages to views
 
 Get it working completely. Worry about styling last.
