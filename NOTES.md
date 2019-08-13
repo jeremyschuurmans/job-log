@@ -8,5 +8,6 @@ Next steps (in no particular order):
  - Add a new company on new company form
  - View all applications on applications
 15. add error messages to views
+16. add follow up button/form
 
 Get it working completely. Worry about styling last.
