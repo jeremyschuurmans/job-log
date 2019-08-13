@@ -19,23 +19,6 @@
 <% end %>
 </div>
 
-<button class="next-app" company-id="<%= @company.id %>" app-id="<%= @application.id %>">Next application</button>
-
-<script type="text/javascript" charset="utf-8">
-  $(function() {
-    $(".next-app").on("click", function() {
-      let companyId = parseInt($(".next-app").attr("company-id")) + 1;
-      let nextAppId = parseInt($(".next-app").attr("app-id")) + 1;
-      $.getJSON("/companies/" + companyId + "/applications/" + nextAppId + ".json", function(data) {
-        $(".company-name").text(data.company_name);
-
-        $(".next-app").attr("company-id", data["company.id"]);
-        $(".next-app").attr("app-id", data["id"]);
-      });
-    });
-  });
-</script>
-
 
 <%= link_to("Sign Out", logout_path, method: :delete) %>
 <%= link_to("Companies", companies_path) %>
