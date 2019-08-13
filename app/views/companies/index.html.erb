@@ -13,6 +13,39 @@
   <% end %>
 <% end %>
 
+<button class="show-all">Applications Quick View</button>
+<button class="clear-all">Hide Applications</button>
+
+<div id="apps"></div>
+
+<script type="text/javascript" charset="utf-8">
+$(function() {
+  $(".show-all").on("click", function() {
+    $.get("/applications" + ".json", function(data) {
+      let companies = data.map(c => {
+        if (c.date !== null) {
+        return `
+          <div class="company-info">
+            <a href="/companies/${c.company.id}/applications/${c.id}">${c.company_name}</a>
+            <p>${c.date}</p>
+          </div>`
+        } else {
+          return `
+            <div class="company-info">
+              <a href="/companies/${c.company.id}/applications/${c.id}">${c.company_name}</a>
+              <p>Not yet applied</p>
+            </div>`
+          };
+        }).join(' ');
+      $("#apps").html(companies);
+    });
+  });
+});
+$(".clear-all").on("click", function() {
+  $(".company-info").hide();
+})
+</script>
+
 <%= link_to("Sign Out", logout_path, method: :delete) %>
 
 <%= link_to("Add a New Company", new_company_path) %>
