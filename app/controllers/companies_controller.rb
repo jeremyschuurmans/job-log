@@ -6,6 +6,10 @@ class CompaniesController < ApplicationController
   def index
     @user = current_user
     @companies = @user.companies.all
+    respond_to do |format|
+      format.html
+      format.json { render json: @companies }
+    end
   end
 
   def new
@@ -29,6 +33,10 @@ class CompaniesController < ApplicationController
 
   def show
     @company = Company.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.json { render json: @company }
+    end
   end
 
   def edit
