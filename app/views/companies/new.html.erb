@@ -19,4 +19,54 @@
   <%= f.submit "Submit Company" %>
 <% end %>
 
+<div id="show-company">
+  <div id="company-name"></div>
+  <div id="company-street-address"></div>
+  <div id="company-city"></div>
+  <div id="company-state"></div>
+  <div id="company-zip-code"></div>
+  <div id="company-telephone"></div>
+  <div id="company-contact"></div>
+</div>
+
 <%= link_to("Sign Out", logout_path, method: :delete) %>
+
+<script type="text/javascript" charset="utf-8">
+    $(function() {
+      setupCreateNewCompany();
+    });
+
+    function createNewCompany(url, data) {
+      $.post(url, data, "json")
+       .done(json => {
+         let newCompany = new Company(json);
+         newCompany.updateHTML();
+      });
+    };
+
+    class Company {
+      constructor(json) {
+        this.data = json;
+      }
+      updateHTML() {
+        $("#company-name").text(this.data.name);
+        $("#company-street_address").text(this.data.street_address);
+        $("#company-city").text(this.data.city);
+        $("#company-state").text(this.data.state);
+        $("#company-zip-code").text(this.data.zip_code);
+        $("#company-telephone").text(this.data.telephone_number);
+        $("#company-contact").text(this.data.contact_person);
+      };
+    };
+
+    function setupCreateNewCompany() {
+      $("form").submit(function(event) {
+        event.preventDefault();
+
+        let inputValues = $(this).serialize();
+        let url = $(this).attr("action");
+
+        createNewCompany(url, inputValues);
+      });
+    };
+</script>
