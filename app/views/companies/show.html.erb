@@ -7,6 +7,11 @@
 <%= @company.address['zip'] %>
 <%= number_to_phone(@company.telephone_number) %>
 <%= @company.contact_person %>
+<% if @company.applied == true %>
+  <%= @company.have_applied %>
+<% else %>
+  <%= @company.have_not_applied %>
+<% end %>
 </p>
 
 <%= link_to("Add a New Application", edit_company_application_path(@company)) %>

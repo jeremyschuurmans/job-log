@@ -6,6 +6,11 @@
 <% @companies.each do |company| %>
   <img src="https://logo.clearbit.com/<%= company.company_url %>">
   <%= link_to company.name, company_path(company) %>
+  <% if company.applied == true %>
+    <%= company.have_applied %>
+  <% else %>
+    <%= company.have_not_applied %>
+  <% end %>
 <% end %>
 
 <%= link_to("Sign Out", logout_path, method: :delete) %>

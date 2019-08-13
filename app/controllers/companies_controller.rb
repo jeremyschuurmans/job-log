@@ -60,7 +60,7 @@ class CompaniesController < ApplicationController
   private
 
     def company_params
-      params.require(:company).permit(:name, :telephone_number, :contact_person, address: [:street_address, :city, :state, :zip_code])
+      params.require(:company).permit(:name, :telephone_number, :contact_person, :applied, address: [:street_address, :city, :state, :zip_code])
     end
 
     def find_and_update_associated_application

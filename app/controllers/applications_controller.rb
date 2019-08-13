@@ -21,8 +21,10 @@ class ApplicationsController < ApplicationController
   end
 
   def update
+    @company = Company.find(params[:id])
     @application = Application.find(params[:id])
     if @application.update(application_params)
+      set_applied_to_true_in_company
       flash[:success] = "Success!"
       redirect_to company_application_url(@application)
     else
@@ -48,4 +50,8 @@ class ApplicationsController < ApplicationController
       params.require(:application).permit(:company_name, :date, :followup, :response)
     end
 
+    def set_applied_to_true_in_company
+      @company.applied = true
+      @company.save
+    end
 end

@@ -7,4 +7,12 @@ class Company < ApplicationRecord
   def company_url
     self.name.gsub(" ", "").downcase.concat('.com')
   end
+
+  def have_applied
+    "Applied"
+  end
+
+  def have_not_applied
+    "Not yet applied"
+  end
 end
