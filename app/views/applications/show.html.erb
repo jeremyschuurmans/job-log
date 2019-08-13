@@ -1,7 +1,18 @@
 <%= @application.company_name %>
 <%= @application.date %>
-<%= @application.followup %>
-<%= @application.response %>
+<% if @application.followup == true && @application.response == "" %>
+  <%= @application.followed_up %>
+  <%= form_for @application, url: {action: "update"} do |f| %>
+    <%= f.text_area :response %>
+    <%= f.submit %>
+  <% end %>
+<% elsif @application.followup == true && @application.response != "" %>
+  <%= @application.followed_up %>
+  <%= @application.response %>
+<% else %>
+  <%= @application.not_followed_up %>
+<% end %>
+
 
 <%= link_to("Sign Out", logout_path, method: :delete) %>
 <%= link_to("Companies", companies_path) %>

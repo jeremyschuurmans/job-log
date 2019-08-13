@@ -4,6 +4,11 @@
 <% @applications.each do |application| %>
   <li><%= link_to application.company_name, company_application_path(application.company_id, application.id) %>
   <%= application.date %></li>
+  <% if application.followup == true %>
+    <%= application.followed_up %>
+  <% else %>
+    <%= application.not_followed_up %>
+  <% end %>
 <% end %>
 </ul>
 <%= link_to("Companies", companies_path) %>
