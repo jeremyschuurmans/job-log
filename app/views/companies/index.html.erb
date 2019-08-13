@@ -6,12 +6,6 @@
 <% @companies.each do |company| %>
   <img src="https://logo.clearbit.com/<%= company.company_url %>">
   <%= link_to company.name, company_path(company) %>
-  <%= company.address['street_address'] %>
-  <%= company.address['city'] %>
-  <%= company.address['state'] %>
-  <%= company.address['zip'] %>
-  <%= number_to_phone(company.telephone_number) %>
-  <%= company.contact_person %>
 <% end %>
 
 <%= link_to("Sign Out", logout_path, method: :delete) %>
