@@ -4,7 +4,8 @@ class ApplicationsController < ApplicationController
 
   def index
     @user = current_user
-    @applications = @user.applications.all.where.not(company_name: nil).order(date: :desc).limit(1)
+    @applications = @user.applications.all
+    # .where.not(company_name: nil).order(date: :desc).limit(1)
     respond_to do |format|
       format.html
       format.json { render json: @applications }
@@ -12,7 +13,12 @@ class ApplicationsController < ApplicationController
   end
 
   def show
+    @company = Company.find_by(id: params[:id])
     @application = Application.find_by(id: params[:id])
+    respond_to do |format|
+      format.html
+      format.json { render json: @application }
+    end
   end
 
   def edit
