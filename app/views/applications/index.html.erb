@@ -11,5 +11,27 @@
   <% end %>
 <% end %>
 </ul>
+
+<button class="show-all">Show all applications</button>
+
+<div id="apps"></div>
+
+<script type="text/javascript" charset="utf-8">
+$(function() {
+  $(".show-all").on("click", function() {
+    $.get("/applications" + ".json", function(data) {
+      let companies = data.map(c => {
+        return `
+          <div class="company-info">
+            <a href="/companies/${c.company.id}/applications/${c.id}">${c.company_name}</a>
+            <p>${c.date}</p>
+          </div>`
+        }).join(' ');
+      $("#apps").html(companies);
+    });
+  });
+});
+</script>
+
 <%= link_to("Companies", companies_path) %>
 <%= link_to("Sign Out", logout_path, method: :delete) %>
