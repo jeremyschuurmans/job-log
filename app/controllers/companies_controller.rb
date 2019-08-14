@@ -24,7 +24,8 @@ class CompaniesController < ApplicationController
       @user.companies << @company
       find_and_update_associated_application
       flash[:success] = "Success!"
-      redirect_to @company
+      render json: @company
+      # redirect_to @company
     else
       flash[:danger] = "Company not saved."
       render 'new'

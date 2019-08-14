@@ -20,13 +20,15 @@
 <% end %>
 
 <div id="show-company">
-  <div id="company-name"></div>
-  <div id="company-street-address"></div>
-  <div id="company-city"></div>
-  <div id="company-state"></div>
-  <div id="company-zip-code"></div>
-  <div id="company-telephone"></div>
-  <div id="company-contact"></div>
+  <div class="logo"></div>
+  <div class="link"></div>
+  <div class="name"></div>
+  <div class="street-address"></div>
+  <div class="city"></div>
+  <div class="state"></div>
+  <div class="zip"></div>
+  <div class="telephone"></div>
+  <div class="contact"></div>
 </div>
 
 <%= link_to("Sign Out", logout_path, method: :delete) %>
@@ -49,13 +51,18 @@
         this.data = json;
       }
       updateHTML() {
-        $("#company-name").text(this.data.name);
-        $("#company-street_address").text(this.data.street_address);
-        $("#company-city").text(this.data.city);
-        $("#company-state").text(this.data.state);
-        $("#company-zip-code").text(this.data.zip_code);
-        $("#company-telephone").text(this.data.telephone_number);
-        $("#company-contact").text(this.data.contact_person);
+        let companyLink = `<a href="/companies/${this.data.id}">${this.data.name}</a>`;
+        let companyUrl = this.data.name.toLowerCase().replace(/\s/g, '') + ".com";
+        let companyLogo = `<img src="https://logo.clearbit.com/${companyUrl}">`;
+
+        $(".logo").html(companyLogo);
+        $(".link").html(companyLink);
+        $(".street-address").text(this.data.address.street_address);
+        $(".city").text(this.data.address.city);
+        $(".state").text(this.data.address.state);
+        $(".zip").text(this.data.address.zip_code);
+        $(".telephone").text(this.data.telephone_number);
+        $(".contact").text(this.data.contact_person);
       };
     };
 
