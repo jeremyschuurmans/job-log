@@ -76,7 +76,7 @@
       <%= f.label :password, class: "sr-only" %>
       <%= f.password_field :password, class: "form-control", placeholder: "Password"%>
       <%= f.submit 'Sign in', class: "btn btn-lg btn-primary btn-block" %>
-      <p class="mt-5 mb-3"><%= link_to('Signup instead', signup_path) %></p>
+      <p class="mt-5 mb-3"><%= link_to('Sign up instead', signup_path) %></p>
       <p><%= link_to('Sign in with GitHub', '/auth/github', method: :post) %></p>
     <% end %>
 
