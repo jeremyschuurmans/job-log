@@ -65,7 +65,7 @@
   <body class="text-center">
 
     <% if flash[:alert] %>
-      <div class="alert"><%= flash[:alert] %></div> -->
+      <div class="alert"><%= flash[:alert] %></div>
     <% end %>
 
     <%= form_for :session, :html => {class: "form-signin"}, url: {action: "create"} do |f| %>
