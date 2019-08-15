@@ -28,8 +28,17 @@
   max-width: 40rem;
 }
 
+.jumbotron h1 {
+  padding-top: 80px;
+  padding-bottom: 20px;
+}
+
 .company-info ul {
   list-style: none;
+}
+
+.card-img-top {
+  border-bottom: 1px solid black;
 }
 
 footer {
@@ -80,8 +89,8 @@ footer p {
         <div class="container">
           <h1 class="jumbotron-heading">Your Companies</h1>
           <p>
-            <button class="show-all btn btn-primary my-2">Applications Quick View</button>
-            <button class="clear-all btn btn-secondary my-2">Hide Applications</button>
+            <button class="show-all btn btn-primary my-2" role="button">Applications Quick View</button>
+            <button class="clear-all btn btn-secondary my-2"role="button">Hide Applications</button>
           </p>
           <div id="apps"></div>
         </div>
@@ -95,18 +104,17 @@ footer p {
           <% @companies.each do |company| %>
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
-                <img class="card-img-top" src="https://logo.clearbit.com/<%= company.company_url %>", alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;">
-                <div class="card-body">
-                  <p class="card-text"><%= link_to company.name, company_path(company) %></p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                <img class="card-img-top img-responsive" src="https://logo.clearbit.com/<%= company.company_url %>", alt="Company logo">
+                  <div class="card-body">
+                    <p class="card-text"><%= company.name %></p>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="btn-group">
+                        <%= button_to "View", company_path(company), class: "btn btn-sm btn-outline-secondary", method: :get %>
+                        <%= button_to "Edit", edit_company_path(company), class: "btn btn-sm btn-outline-secondary", method: :get %>                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
             <% end %>
             <!-- <div class="col-md-4">
               <div class="card mb-4 box-shadow">
@@ -238,11 +246,12 @@ footer p {
 
     <footer class="text-muted">
       <div class="container">
+        <p class="float-left">
+          <a href="#">My account</a>
+        </p>
         <p class="float-right">
           <a href="#">Back to top</a>
         </p>
-        <p>Album example is © Bootstrap, but please download and customize it for yourself!</p>
-        <p>New to Bootstrap? <a href="../../">Visit the homepage</a> or read our <a href="../../getting-started/">getting started guide</a>.</p>
       </div>
     </footer>
 
