@@ -1,36 +1,64 @@
-<% if flash[:success] %>
-<div class="success"><%= flash[:success] %></div>
-<% end %>
-<% if flash[:danger] %>
-<div class="danger"><%= flash[:danger] %></div>
-<% end %>
-
-<div class="app-details">
-<div class="company-name"><%= @application.company_name %></div>
-<%= @application.date %>
-<% if @application.followup == true && @application.response == "" %>
-  <%= @application.followed_up %>
-  <%= form_for @application, url: {action: "update"} do |f| %>
-    <%= f.text_area :response %>
-    <%= f.submit "Submit Response" %>
-  <% end %>
-<% elsif @application.followup == true && @application.response != "" %>
-  <%= @application.followed_up %>
-  <%= @application.response %>
-  <%= form_for @application, url: {action: "update"} do |f| %>
-    <%= f.check_box :followup %>
-    <%= f.submit "Submit" %>
-  <% end %>
-<% else %>
-  <%= @application.not_followed_up %>
-  <%= form_for @application, url: {action: "update"} do |f| %>
-    <%= f.check_box :followup %>
-    <%= f.submit "Submit" %>
-  <% end %>
-<% end %>
-</div>
-
-
-<%= link_to("Sign Out", logout_path, method: :delete) %>
-<%= link_to("Companies", companies_path) %>
-<%= link_to("Applications", applications_path) %>
+<body class="text-center", id="form-page">
+  <header>
+      <nav class="navbar navbar-expand-sm fixed-top navbar-light bg-light box-shadow">
+        <div class="container d-flex justify-content-between">
+          <a href="#" class="navbar-brand d-flex">
+            <%= image_tag("logo", alt: "logo", size: "170x64") %>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="collapsibleNavbar">
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+              <%= link_to("Companies", companies_path, class: "nav-link") %>
+            </li>
+            <li class="nav-item">
+              <%= link_to("Applications", applications_path, class: "nav-link") %>
+            </li>
+            <li class="nav-item">
+              <%= link_to("Add a New Company", new_company_path, class: "nav-link") %>
+            </li>
+            <li class="nav-item">
+              <%= link_to("Sign Out", logout_path, method: :delete, class: "nav-link") %>
+            </li>
+          </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <% if flash[:success] %>
+      <div class="success"><%= flash[:success] %></div>
+    <% end %>
+    <% if flash[:danger] %>
+      <div class="danger"><%= flash[:danger] %></div>
+    <% end %>
+    <div class="card-container justify-content-center">
+      <div class="card box-shadow" style="width:400px;">
+        <div class="card-body">
+          <h4 class="company-name"><%= @application.company_name %></h4>
+          <p class="application-date">
+            <%= @application.date %>
+          </p>
+          <% if @application.followup == true && @application.response == "" %>
+            <%= @application.followed_up %>
+            <%= form_for @application, url: {action: "update"} do |f| %>
+              <p><%= f.text_area :response, placeholder: "Enter the response here" %></p>
+              <p><%= f.submit "Submit Response" %></p>
+            <% end %>
+          <% elsif @application.followup == true && @application.response != "" %>
+            <p><%= @application.followed_up %></p>
+            <p><%= @application.response %></p>
+          <% else %>
+            <%= @application.not_followed_up %>
+            <%= form_for @application, url: {action: "update"} do |f| %>
+              <%= f.label :followup, "Check here when you follow up." %>
+              <%= f.check_box :followup %>
+              <p><%= f.submit "Submit" %></p>
+            <% end %>
+          <% end %>
+          <br>
+        </div>
+      </div>
+    </div>
+</body>
