@@ -14,7 +14,7 @@
     margin-bottom: 0;
     background-color: #fff;
   }
-  
+
   @media (min-width: 768px) {
     .jumbotron {
       padding-top: calc(var(--jumbotron-padding-y) * 2);
@@ -32,10 +32,7 @@
 
   .jumbotron .container {
     max-width: 40rem;
-  }
-
-  .jumbotron h1 {
-    padding-top: 80px;
+    padding-top: 100px;
     padding-bottom: 20px;
   }
 
