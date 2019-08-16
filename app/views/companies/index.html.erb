@@ -63,7 +63,7 @@ footer p {
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="collapsibleNavbar">
-          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             <li class="nav-item">
               <%= link_to("Companies", companies_path, class: "nav-link") %>
             </li>
@@ -81,14 +81,18 @@ footer p {
         </div>
       </nav>
     </header>
-
     <main role="main">
-
       <section class="jumbotron text-center">
         <div class="container">
+          <% if flash[:success] %>
+          <div class="success"><%= flash[:success] %></div>
+          <% end %>
+          <% if flash[:danger] %>
+          <div class="danger"><%= flash[:danger] %></div>
+          <% end %>
           <h1 class="jumbotron-heading">Your Companies</h1>
           <p>
-            <button class="show-all btn btn-primary my-2" role="button">Applications Quick View</button>
+            <button class="show-all btn btn-primary my-2" role="button">Show Applications</button>
             <button class="clear-all btn btn-secondary my-2"role="button">Hide Applications</button>
           </p>
           <div id="apps"></div>
@@ -126,43 +130,3 @@ footer p {
         </p>
       </div>
     </footer>
-
-<% if flash[:notice] %>
-  <div class="notice"><%= flash[:notice] %></div>
-<% end %>
-
-<script type="text/javascript" charset="utf-8">
-$(function() {
-  $(".show-all").on("click", function() {
-    $.get("/applications" + ".json", function(data) {
-      let companies = data.map(c => {
-        if (c.date !== null) {
-        return `
-          <div class="company-info">
-            <ul>
-              <li>
-                <a href="/companies/${c.company.id}/applications/${c.id}">${c.company_name}</a>
-                <p>${c.date}</p>
-              </li>
-            </ul>
-          </div>`
-        } else {
-          return `
-            <div class="company-info">
-              <ul>
-                <li>
-                  <a href="/companies/${c.company.id}/applications/${c.id}">${c.company_name}</a>
-                  <p>Not yet applied</p>
-                </li>
-              </ul>
-            </div>`
-          };
-        }).join(' ');
-      $("#apps").html(companies);
-    });
-  });
-});
-$(".clear-all").on("click", function() {
-  $(".company-info").hide();
-})
-</script>
