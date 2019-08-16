@@ -1,9 +1,11 @@
 
   <body class="text-center", id="form-page">
-
-    <% if flash[:alert] %>
-      <div class="alert"><%= flash[:alert] %></div> -->
-    <% end %>
+      <% if flash[:success] %>
+        <div class="success"><%= flash[:success] %></div>
+      <% end %>
+      <% if flash[:danger] %>
+        <div class="danger"><%= flash[:danger] %></div>
+      <% end %>
 
     <%= form_for @user, :html => {class: "form-signin"}, url: {action: "create"} do |f| %>
       <%= image_tag("logo", alt: "logo", id: "logo", size: "340x127") %>
