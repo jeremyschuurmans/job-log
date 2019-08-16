@@ -5,7 +5,7 @@ class CompaniesController < ApplicationController
 
   def index
     @user = current_user
-    @companies = @user.companies.all
+    @companies = @user.companies.all.order(:id)
     respond_to do |format|
       format.html
       format.json { render json: @companies }

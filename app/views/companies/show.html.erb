@@ -1,22 +1,53 @@
-<div class="company-details">
-<p>
-<img class="company-logo" src="https://logo.clearbit.com/<%= @company.company_url %>">
-<div class="company-name"><%= @company.name %></div>
-<div class="company-street-address"><%= @company.address['street_address'] %></div>
-<div class="company-city"><%= @company.address['city'] %></div>
-<div class="company-state"><%= @company.address['state'] %></div>
-<div class="company-zip"><%= @company.address['zip'] %></div>
-<div class="company-telephone"><%= number_to_phone(@company.telephone_number) %></div>
-<div class="company-contact"><%= @company.contact_person %></div>
-<div class="company-applied"><% if @company.applied == true %>
-  <%= @company.have_applied %>
-<% else %>
-  <%= @company.have_not_applied %>
-<% end %></div>
-</p>
-</div>
+<body class="text-center", id="form-page">
+  <header>
+      <nav class="navbar navbar-expand-sm fixed-top navbar-light bg-light box-shadow">
+        <div class="container d-flex justify-content-between">
+          <a href="#" class="navbar-brand d-flex">
+            <%= image_tag("logo", alt: "logo", size: "170x64") %>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="collapsibleNavbar">
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+              <%= link_to("Companies", companies_path, class: "nav-link") %>
+            </li>
+            <li class="nav-item">
+              <%= link_to("Applications", applications_path, class: "nav-link") %>
+            </li>
+            <li class="nav-item">
+              <%= link_to("Add a New Company", new_company_path, class: "nav-link") %>
+            </li>
+            <li class="nav-item">
+              <%= link_to("Sign Out", logout_path, method: :delete, class: "nav-link") %>
+            </li>
+          </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
 
-<button class="next-company" company-id="<%= @company.id %>">Next Company</button>
+    <div class="company-details">
+    <p>
+    <img class="company-logo" src="https://logo.clearbit.com/<%= @company.company_url %>">
+    <div class="company-name"><%= @company.name %></div>
+    <div class="company-street-address"><%= @company.address['street_address'] %></div>
+    <div class="company-city"><%= @company.address['city'] %></div>
+    <div class="company-state"><%= @company.address['state'] %></div>
+    <div class="company-zip"><%= @company.address['zip'] %></div>
+    <div class="company-telephone"><%= number_to_phone(@company.telephone_number) %></div>
+    <div class="company-contact"><%= @company.contact_person %></div>
+    <div class="company-applied"><% if @company.applied == true %>
+      <%= @company.have_applied %>
+    <% else %>
+      <%= @company.have_not_applied %>
+    <% end %></div>
+    </p>
+    <button class="next-company" company-id="<%= @company.id %>">Next Company</button>
+    </div>
+
+</body>
 
 <script type="text/javascript" charset="utf-8">
   $(function() {
@@ -43,8 +74,3 @@
     });
   });
 </script>
-<%= link_to("Add a New Application", edit_company_application_path(@company)) %>
-<%= link_to("Add a New Company", new_company_path) %>
-<%= link_to("Companies", companies_path) %>
-<%= link_to("Applications", applications_path) %>
-<%= link_to("Sign Out", logout_path, method: :delete) %>
