@@ -1,3 +1,76 @@
 // Place all the styles related to the applications controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "bootstrap";
+
+html,
+  body#new-applications-page {
+    height: 100%;
+  }
+
+  body#new-applications-page {
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+    -ms-flex-align: center;
+    -ms-flex-pack: center;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    padding-top: 10px;
+    padding-bottom: 40px;
+    background-color: #f5f5f5;
+  }
+
+  img#logo {
+    width: 100%;
+    margin-top: -70px;
+  }
+
+  .form-applications-new {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+  }
+
+  .form-applications-new .form-control {
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  .form-applications-new .form-control:focus {
+    z-index: 2;
+  }
+
+  .form-applications-new input[type="company_name"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  .form-applications-new input[type="date"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  .form-applications-new input[type="followup"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  .form-applications-new input[type="response"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  input.btn {
+    margin-top: 10px;
+  }
