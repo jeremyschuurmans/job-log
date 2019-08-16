@@ -1,16 +1,80 @@
-<h1>Applications</h1>
 
-<ul>
-<% @applications.each do |application| %>
-  <li><%= link_to application.company_name, company_application_path(application.company_id, application.id) %>
-  <%= application.date %></li>
-  <% if application.followup == true %>
-    <%= application.followed_up %>
-  <% else %>
-    <%= application.not_followed_up %>
-  <% end %>
-<% end %>
-</ul>
-
-<%= link_to("Companies", companies_path) %>
-<%= link_to("Sign Out", logout_path, method: :delete) %>
+  <header>
+      <nav class="navbar navbar-expand-sm fixed-top navbar-light bg-light box-shadow">
+        <div class="container d-flex justify-content-between">
+          <a href="#" class="navbar-brand d-flex">
+            <%= image_tag("logo", alt: "logo", size: "170x64") %>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="collapsibleNavbar">
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+              <%= link_to("Companies", companies_path, class: "nav-link") %>
+            </li>
+            <li class="nav-item">
+              <%= link_to("Applications", applications_path, class: "nav-link") %>
+            </li>
+            <li class="nav-item">
+              <%= link_to("Add a New Company", new_company_path, class: "nav-link") %>
+            </li>
+            <li class="nav-item">
+              <%= link_to("Sign Out", logout_path, method: :delete, class: "nav-link") %>
+            </li>
+          </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main role="main">
+      <section class="jumbotron text-center">
+        <div class="container">
+          <% if flash[:success] %>
+          <div class="success"><%= flash[:success] %></div>
+          <% end %>
+          <% if flash[:danger] %>
+          <div class="danger"><%= flash[:danger] %></div>
+          <% end %>
+          <h1 class="jumbotron-heading">Your Applications</h1>
+        </div>
+      </section>
+      <div class="album py-5 bg-light">
+        <div class="container">
+          <div class="row">
+          <% @applications.each do |application| %>
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <img class="card-img-top img-responsive" src="https://logo.clearbit.com/<%= application.company.company_url %>", alt="Company logo">
+                  <div class="card-body">
+                    <p class="card-text"><%= link_to application.company_name, company_application_path(application.company_id, application.id) %></p>
+                    <%= application.date %>
+                    <% if application.followup == true %>
+                      <%= application.followed_up %>
+                    <% else %>
+                      <%= application.not_followed_up %>
+                    <% end %>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="btn-group">
+                        <%#= button_to "View", company_path(company), class: "btn btn-sm btn-outline-secondary", method: :get %>
+                        <%#= button_to "Edit", edit_company_path(company), class: "btn btn-sm btn-outline-secondary", method: :get %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </main>
+    <footer class="text-muted">
+      <div class="container">
+        <p class="float-left">
+          <%= link_to "My account", edit_user_path(@user) %>
+        </p>
+        <p class="float-right">
+          <a href="#">Back to top</a>
+        </p>
+      </div>
+    </footer>
