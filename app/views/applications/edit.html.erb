@@ -1,5 +1,5 @@
-<body class="text-center", id="new-applications-page">
-<%= form_for @application, :html => {class: "form-applications-new"}, url: {action: "update"} do |f| %>
+<body class="text-center", id="form-page">
+<%= form_for @application, :html => {class: "form-standard"}, url: {action: "update"} do |f| %>
   <% if flash[:success] %>
     <div class="success"><%= flash[:success] %></div>
   <% end %>

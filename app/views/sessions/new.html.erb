@@ -8,7 +8,7 @@
       <div class="danger"><%= flash[:danger] %></div>
     <% end %>
 
-    <%= form_for :session, :html => {class: "form-signin"}, url: {action: "create"} do |f| %>
+    <%= form_for :session, :html => {class: "form-standard"}, url: {action: "create"} do |f| %>
       <%= image_tag("logo", alt: "logo", id: "logo", size: "340x127") %>
       <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
       <%= f.label :email, class: "sr-only" %>

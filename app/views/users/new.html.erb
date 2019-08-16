@@ -7,7 +7,7 @@
         <div class="danger"><%= flash[:danger] %></div>
       <% end %>
 
-    <%= form_for @user, :html => {class: "form-signin"}, url: {action: "create"} do |f| %>
+    <%= form_for @user, :html => {class: "form-standard"}, url: {action: "create"} do |f| %>
       <%= image_tag("logo", alt: "logo", id: "logo", size: "340x127") %>
       <h1 class="h3 mb-3 font-weight-normal">Sign up</h1>
       <%= f.label :name, class: "sr-only" %>
