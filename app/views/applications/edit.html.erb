@@ -34,15 +34,19 @@
   <% if flash[:danger] %>
     <div class="danger"><%= flash[:danger] %></div>
   <% end %>
-  <h1 class="h3 mb-3 font-weight-normal">Apply to <%= @company.name %></h1>
+  <% if @application.date != nil || @application.followup != false || @application.response != "" %>
+    <h1 class="h3 mb-3 font-weight-normal">Edit <%= @company.name %></h1>
+  <% else %>
+    <h1 class="h3 mb-3 font-weight-normal">Apply to <%= @company.name %></h1>
+  <% end %>
   <%= f.label :company_name, "Company name", class: "sr-only" %>
   <%= f.text_field :company_name, class: "form-control", value: @company.name %>
   <%= f.label :date, "Date", class: "sr-only" %>
   <%= f.date_field :date, class: "form-control", placeholder: "Date" %>
   <%= f.label :followup, "Click this button if you have followed up with this company." %>
-  <%= f.radio_button :followup, class: "form-control", id: "followup-button" %>
+  <%= f.check_box :followup, class: "form-control", id: "followup-button" %>
   <%= f.label :response, "Response from followup", class: "sr-only" %>
-  <%= f.text_area :response, class: "form-control", placeholder: "Response" %>
+  <%= f.text_area :response, class: "form-control" %>
   <%= f.submit "Submit Application", class: "btn btn-lg btn-primary btn-block" %>
 <% end %>
 </body>

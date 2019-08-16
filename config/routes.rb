@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get '/auth/github/callback', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   get '/applications', to: 'applications#index'
-
+  
   resources :users, except: [:index, :new, :create, :show, :destroy]
 
   resources :companies do

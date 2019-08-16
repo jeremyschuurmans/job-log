@@ -24,7 +24,8 @@ class ApplicationsController < ApplicationController
     @company = Company.find(params[:id])
     @application = Application.find(params[:id])
     if @application.update(application_params)
-      set_applied_to_true_in_company
+      set_applied_to_true_in_company if @company.applied != true
+      remove_response_if_followup_is_set_to_false
       flash[:success] = "Success!"
       redirect_to company_application_url(@application)
     else
@@ -34,8 +35,11 @@ class ApplicationsController < ApplicationController
   end
 
   def destroy
+    @company = Company.find(params[:id])
     @application = Application.find(params[:id])
     if @application.destroy
+      @company.applied = false
+      @company.save
       flash[:success] = "Application deleted!"
       redirect_to applications_url
     else
@@ -53,5 +57,12 @@ class ApplicationsController < ApplicationController
     def set_applied_to_true_in_company
       @company.applied = true
       @company.save
+    end
+
+    def remove_response_if_followup_is_set_to_false
+      if @application.followup == false && @application.response != ""
+        @application.response = ""
+        @application.save
+      end
     end
 end
