@@ -28,6 +28,12 @@
       </nav>
     </header>
     <div class="card-container justify-content-center">
+      <% if flash[:success] %>
+        <div class="success"><%= flash[:success] %></div>
+      <% end %>
+      <% if flash[:danger] %>
+        <div class="danger"><%= flash[:danger] %></div>
+      <% end %>
       <div class="card box-shadow" style="width:400px;">
         <img class="company-logo card-img-top" src="https://logo.clearbit.com/<%= @company.company_url %>" alt="Card image" style="width:100%">
         <div class="card-body">
@@ -50,7 +56,6 @@
         </div>
       </div>
     </div>
-
 </body>
 
 <script type="text/javascript" charset="utf-8">

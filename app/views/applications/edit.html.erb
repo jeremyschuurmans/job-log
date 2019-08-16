@@ -34,7 +34,7 @@
   <% if flash[:danger] %>
     <div class="danger"><%= flash[:danger] %></div>
   <% end %>
-  <% if @application.date != nil || @application.followup != false || @application.response != "" %>
+  <% if @application.date != nil %>
     <h1 class="h3 mb-3 font-weight-normal">Edit <%= @company.name %></h1>
   <% else %>
     <h1 class="h3 mb-3 font-weight-normal">Apply to <%= @company.name %></h1>
