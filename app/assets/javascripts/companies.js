@@ -17,7 +17,7 @@ $(function() {
             <div class="company-info">
               <ul>
                 <li>
-                  <a href="/companies/${c.company.id}/applications/${c.id}">${c.company_name}</a>
+                  <a href="/companies/${c.company.id}/applications/${c.id}/edit">${c.company_name}</a>
                   <p>Not yet applied</p>
                 </li>
               </ul>
