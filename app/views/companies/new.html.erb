@@ -1,37 +1,51 @@
-<%= form_for @company, url: {action: "create"} do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+<body class="text-center", id="new-company-page">
+
+
+
+
+
+<%= form_for @company, :html => {class: "form-company-new"}, url: {action: "create"} do |f| %>
+<% if flash[:success] %>
+<div class="success"><%= flash[:success] %></div>
+<% end %>
+<% if flash[:danger] %>
+<div class="danger"><%= flash[:danger] %></div>
+<% end %>
+  <%= image_tag("logo", alt: "logo", id: "logo", size: "340x127") %>
+  <h1 class="h3 mb-3 font-weight-normal">Add a new company</h1>
+  <div id="show-company">
+    <div class="logo"></div>
+    <div class="link"></div>
+    <div class="name"></div>
+    <div class="street-address"></div>
+    <div class="city"></div>
+    <div class="state"></div>
+    <div class="zip"></div>
+    <div class="telephone"></div>
+    <div class="contact"></div>
+  </div>
+  <%= f.label :name, class: "sr-only" %>
+  <%= f.text_field :name, class: "form-control", placeholder: "Name" %>
   <%= f.fields_for :address do |a| %>
-    <%= a.label :street_address, "Street Address" %>
-    <%= a.text_field :street_address %>
-    <%= a.label :city %>
-    <%= a.text_field :city %>
-    <%= a.label :state %>
-    <%= a.text_field :state %>
-    <%= a.label :zip_code, "Zip" %>
-    <%= a.text_field :zip_code %>
+    <%= a.label :street_address, "Street Address", class: "sr-only" %>
+    <%= a.text_field :street_address, class: "form-control", placeholder: "Street address" %>
+    <%= a.label :city, class: "sr-only" %>
+    <%= a.text_field :city, class: "form-control", placeholder: "City" %>
+    <%= a.label :state, class: "sr-only" %>
+    <%= a.text_field :state, class: "form-control", placeholder: "State" %>
+    <%= a.label :zip_code, "Zip", class: "sr-only" %>
+    <%= a.text_field :zip_code, class: "form-control", placeholder: "Zip" %>
   <% end %>
-  <%= f.label :phone %>
-  <%= f.telephone_field :telephone_number %>
-  <%= f.label :contact_person, "Contact Person" %>
-  <%= f.text_field :contact_person %>
+  <%= f.label :phone, class: "sr-only" %>
+  <%= f.telephone_field :telephone_number, class: "form-control", placeholder: "Phone" %>
+  <%= f.label :contact_person, "Contact Person", class: "sr-only" %>
+  <%= f.text_field :contact_person, class: "form-control", placeholder: "Contact person" %>
   <%= f.hidden_field :user_id, :value => @user.id %>
-  <%= f.submit "Submit Company" %>
+  <%= f.submit "Submit company", class: "btn btn-lg btn-primary btn-block" %>
 <% end %>
 
-<div id="show-company">
-  <div class="logo"></div>
-  <div class="link"></div>
-  <div class="name"></div>
-  <div class="street-address"></div>
-  <div class="city"></div>
-  <div class="state"></div>
-  <div class="zip"></div>
-  <div class="telephone"></div>
-  <div class="contact"></div>
-</div>
 
-<%= link_to("Sign Out", logout_path, method: :delete) %>
+</body>
 
 <script type="text/javascript" charset="utf-8">
     $(function() {
