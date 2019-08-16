@@ -57,6 +57,9 @@
                       <div class="btn-group">
                         <%= button_to "View", company_path(company), class: "btn btn-sm btn-outline-secondary", method: :get %>
                         <%= button_to "Edit", edit_company_path(company), class: "btn btn-sm btn-outline-secondary", method: :get %>
+                        <% if company.applied == false %>
+                          <%= button_to "Apply", edit_company_application_path(id: company.id, company_id: company.id), class: "btn btn-sm btn-outline-secondary", method: :get %>
+                        <% end %>
                       </div>
                     </div>
                   </div>
