@@ -11,11 +11,11 @@ class UsersController < ApplicationController
     @user = User.create(user_params)
     if @user.save
       log_in @user
+      flash[:success] = "Success!"
       redirect_to companies_url
-      flash[:notice] = "Success!"
     elsif user_exists?
-      redirect_to login_url
       flash[:danger] = "User exists. Please log in."
+      redirect_to login_url
     else
       render 'new'
     end

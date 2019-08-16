@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
         log_in @user
         redirect_back_or companies_url
       else
-        flash[:alert] = "Username or password is invalid."
+        flash[:danger] = "Username or password is invalid."
         redirect_to login_url
       end
     end
