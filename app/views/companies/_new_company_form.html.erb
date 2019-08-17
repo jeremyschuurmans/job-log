@@ -1,6 +1,7 @@
 <%= form_for @company, :html => {class: "form-standard"}, url: {action: "create"} do |f| %>
   <h1 class="h3 mb-3 font-weight-normal">Add a new company</h1>
   <%= render "error_messages" %>
+  <%= render "shared/flash_messages" %>
   <div id="show-company">
     <div class="logo"></div>
     <div class="link"></div>

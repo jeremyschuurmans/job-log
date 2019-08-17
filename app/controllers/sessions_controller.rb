@@ -15,6 +15,7 @@ class SessionsController < ApplicationController
         password = SecureRandom.urlsafe_base64
         @user = User.create(name: auth['info']['name'], email: auth['info']['email'], password: password)
         log_in @user
+        flash[:success] = "Success!"
         redirect_to companies_url
       end
     else
@@ -31,6 +32,7 @@ class SessionsController < ApplicationController
 
   def destroy
     log_out if logged_in?
+    flash[:alert] = "Have a nice day!"
     redirect_to root_url
   end
 
