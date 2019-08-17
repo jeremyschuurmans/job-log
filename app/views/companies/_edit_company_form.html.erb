@@ -1,6 +1,6 @@
 <%= form_for @company, :html => {class: "form-standard"}, url: {action: "update"} do |f| %>
   <h1 class="h3 mb-3 font-weight-normal">Edit <%= @company.name %></h1>
-  <%= render "shared/error_messages" %>
+  <%= render "error_messages" %>
   <%= f.label :name, class: "sr-only" %>
   <%= f.text_field :name, class: "form-control", value: @company.name %>
   <%= f.fields_for :address do |a| %>

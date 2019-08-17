@@ -1,7 +1,7 @@
   <%= form_for @user, :html => {class: "form-standard"}, url: {action: "create"} do |f| %>
   <%= image_tag("logo", alt: "logo", id: "logo", size: "340x127") %>
   <h1 class="h3 mb-3 font-weight-normal">Sign up</h1>
-  <%= render 'shared/error_messages' %>
+  <%= render 'error_messages' %>
   <%= f.label :name, class: "sr-only" %>
   <%= f.text_field :name, class: "form-control", placeholder: "Name", required: true %>
     <%= f.label :email, class: "sr-only" %>

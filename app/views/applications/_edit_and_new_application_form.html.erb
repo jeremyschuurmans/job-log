@@ -4,7 +4,7 @@
   <% else %>
     <h1 class="h3 mb-3 font-weight-normal">Apply to <%= @company.name %></h1>
   <% end %>
-  <%= render "shared/error_messages" %>
+  <%= render "error_messages" %>
   <%= f.label :company_name, "Company name", class: "sr-only" %>
   <%= f.text_field :company_name, class: "form-control", value: @company.name %>
   <%= f.label :date, "Date", class: "sr-only" %>

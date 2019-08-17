@@ -1,7 +1,7 @@
 <%= form_for :session, :html => {class: "form-standard"}, url: {action: "create"} do |f| %>
   <%= image_tag("logo", alt: "logo", id: "logo", size: "340x127") %>
   <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-  <%= render "shared/error_messages" %>
+  <%= render "users/error_messages" %>
   <%= f.label :email, class: "sr-only" %>
   <%= f.text_field :email, class: "form-control", placeholder: "Email address", required: true %>
   <%= f.label :password, class: "sr-only" %>
