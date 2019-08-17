@@ -1,15 +1,1 @@
-
-    <%= form_for @user, :html => {class: "form-standard"}, url: {action: "create"} do |f| %>
-      <%= image_tag("logo", alt: "logo", id: "logo", size: "340x127") %>
-      <h1 class="h3 mb-3 font-weight-normal">Sign up</h1>
-      <%= render 'shared/error_messages' %>
-      <%= f.label :name, class: "sr-only" %>
-      <%= f.text_field :name, class: "form-control", placeholder: "Name", required: true %>
-      <%= f.label :email, class: "sr-only" %>
-      <%= f.text_field :email, class: "form-control", placeholder: "Email address", required: true %>
-      <%= f.label :password, class: "sr-only" %>
-      <%= f.password_field :password, class: "form-control", placeholder: "Password", required: true %>
-      <%= f.submit 'Sign up', class: "btn btn-lg btn-primary btn-block" %>
-      <p class="mt-5 mb-3"><%= link_to('Sign in instead', login_path) %></p>
-      <p><%= link_to('Sign up with GitHub', '/auth/github', method: :post) %></p>
-    <% end %>
+<%= render "signup_form" %>

@@ -1,0 +1,11 @@
+<%= form_for @user, :html => {class: "form-standard"}, url: {action: "update"} do |f| %>
+  <%= render "shared/flash_messages" %>
+  <h1 class="h3 mb-3 font-weight-normal">My information</h1>
+    <%= f.label :name, class: "sr-only" %>
+    <%= f.text_field :name, class: "form-control", value: @user.name %>
+    <%= f.label :email, class: "sr-only" %>
+    <%= f.text_field :email, class: "form-control", value: @user.email %>
+    <%= f.label :password, class: "sr-only" %>
+    <%= f.password_field :password, class: "form-control", placeholder: "New password" %>
+    <%= f.submit 'Update', class: "btn btn-lg btn-primary btn-block" %>
+<% end %>

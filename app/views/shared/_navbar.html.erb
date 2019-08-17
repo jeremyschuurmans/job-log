@@ -1,0 +1,28 @@
+<header>
+    <nav class="navbar navbar-expand-sm fixed-top navbar-light bg-light box-shadow">
+      <div class="container d-flex justify-content-between">
+        <a href="#" class="navbar-brand d-flex">
+          <%= image_tag("logo", alt: "logo", size: "170x64") %>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+          <li class="nav-item">
+            <%= link_to("Companies", companies_path, class: "nav-link") %>
+          </li>
+          <li class="nav-item">
+            <%= link_to("Applications", applications_path, class: "nav-link") %>
+          </li>
+          <li class="nav-item">
+            <%= link_to("Add a New Company", new_company_path, class: "nav-link") %>
+          </li>
+          <li class="nav-item">
+            <%= link_to("Sign Out", logout_path, method: :delete, class: "nav-link") %>
+          </li>
+        </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
