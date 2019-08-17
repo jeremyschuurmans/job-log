@@ -27,7 +27,7 @@ class ApplicationsController < ApplicationController
     if @application.update(application_params)
       set_applied_to_true_in_company if @company.applied != true
       remove_response_if_followup_is_set_to_false
-      flash[:success] = "Success!"
+      flash[:success] = "Application logged! Congratulations!"
       redirect_to company_application_url(@application)
     else
       flash[:danger] = "Something went wrong."
