@@ -1,0 +1,33 @@
+<%= form_for @company, :html => {class: "form-standard"}, url: {action: "create"} do |f| %>
+  <h1 class="h3 mb-3 font-weight-normal">Add a new company</h1>
+  <%= render "shared/error_messages" %>
+  <div id="show-company">
+    <div class="logo"></div>
+    <div class="link"></div>
+    <div class="name"></div>
+    <div class="street-address"></div>
+    <div class="city"></div>
+    <div class="state"></div>
+    <div class="zip"></div>
+    <div class="telephone"></div>
+    <div class="contact"></div>
+  </div>
+  <%= f.label :name, class: "sr-only" %>
+  <%= f.text_field :name, class: "form-control", placeholder: "Name" %>
+  <%= f.fields_for :address do |a| %>
+    <%= a.label :street_address, "Street Address", class: "sr-only" %>
+    <%= a.text_field :street_address, class: "form-control", placeholder: "Street address" %>
+    <%= a.label :city, class: "sr-only" %>
+    <%= a.text_field :city, class: "form-control", placeholder: "City" %>
+    <%= a.label :state, class: "sr-only" %>
+    <%= a.text_field :state, class: "form-control", placeholder: "State" %>
+    <%= a.label :zip_code, "Zip", class: "sr-only" %>
+    <%= a.text_field :zip_code, class: "form-control", placeholder: "Zip" %>
+  <% end %>
+  <%= f.label :phone, class: "sr-only" %>
+  <%= f.telephone_field :telephone_number, class: "form-control", placeholder: "Phone" %>
+  <%= f.label :contact_person, "Contact Person", class: "sr-only" %>
+  <%= f.text_field :contact_person, class: "form-control", placeholder: "Contact person" %>
+  <%= f.hidden_field :user_id, :value => @user.id %>
+  <%= f.submit "Submit company", class: "btn btn-lg btn-primary btn-block" %>
+<% end %>
