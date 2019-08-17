@@ -5,7 +5,7 @@ class ApplicationsController < ApplicationController
 
   def index
     @user = current_user
-    @applications = @user.applications.all
+    @applications = @user.applications.where.not(date: nil)
     respond_to do |format|
       format.html
       format.json { render json: @applications }
