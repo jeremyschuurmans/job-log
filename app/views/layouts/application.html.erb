@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>JobLog</title>
-    <%= render 'layouts/rails_default' %>
+    <title><%= full_title(yield(:title)) %></title>
+      <%= render 'layouts/rails_default' %>
   </head>
 
   <body>
+    <%= render "shared/navbar" %>
+    <% flash.each do |message_type, message| %>
+      <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+    <% end %>
     <%= yield %>
   </body>
 </html>
