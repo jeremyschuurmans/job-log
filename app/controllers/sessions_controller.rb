@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  layout "form_page"
 
   def new
     @user = User.new

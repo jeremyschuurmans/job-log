@@ -2,13 +2,15 @@ class UsersController < ApplicationController
   include UsersHelper
   before_action :check_if_user_logged_in, only: [:edit, :update]
   before_action :is_this_the_right_user?, only: [:edit, :update]
+  layout "form_page"
 
   def new
     @user = User.new
+    render layout: "form_page"
   end
 
   def create
-    @user = User.create(user_params)
+    @user = User.new(user_params)
     if @user.save
       log_in @user
       flash[:success] = "Success!"
@@ -23,6 +25,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = current_user
+    render layout: "form_page"
   end
 
   def update

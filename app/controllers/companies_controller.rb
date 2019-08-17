@@ -1,6 +1,7 @@
 class CompaniesController < ApplicationController
   before_action :check_if_user_logged_in
   before_action :does_this_company_belong_to_this_user?, only: [:show, :edit, :update, :destroy]
+  layout "form_page", only: [:new, :show, :edit]
 
 
   def index

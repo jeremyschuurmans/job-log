@@ -1,15 +1,8 @@
 
-  <body class="text-center", id="form-page">
-      <% if flash[:success] %>
-        <div class="success"><%= flash[:success] %></div>
-      <% end %>
-      <% if flash[:danger] %>
-        <div class="danger"><%= flash[:danger] %></div>
-      <% end %>
-
     <%= form_for @user, :html => {class: "form-standard"}, url: {action: "create"} do |f| %>
       <%= image_tag("logo", alt: "logo", id: "logo", size: "340x127") %>
       <h1 class="h3 mb-3 font-weight-normal">Sign up</h1>
+      <%= render 'shared/error_messages' %>
       <%= f.label :name, class: "sr-only" %>
       <%= f.text_field :name, class: "form-control", placeholder: "Name", required: true %>
       <%= f.label :email, class: "sr-only" %>
@@ -20,4 +13,3 @@
       <p class="mt-5 mb-3"><%= link_to('Sign in instead', login_path) %></p>
       <p><%= link_to('Sign up with GitHub', '/auth/github', method: :post) %></p>
     <% end %>
-  </body>

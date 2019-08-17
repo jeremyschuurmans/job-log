@@ -1,6 +1,7 @@
 class ApplicationsController < ApplicationController
   before_action :check_if_user_logged_in
   before_action :does_this_application_belong_to_this_user?, only: [:show, :edit, :update, :delete]
+  layout "form_page", only: [:show, :edit]
 
   def index
     @user = current_user

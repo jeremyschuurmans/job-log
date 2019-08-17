@@ -1,11 +1,11 @@
 
-  <body class="text-center" id="form-page">
+
 
     <% if flash[:danger] %>
       <div class="danger"><%= flash[:danger] %></div>
     <% end %>
 
-    <%= form_for :session, :html => {class: "form-page"}, url: {action: "create"} do |f| %>
+    <%= form_for :session, :html => {class: "form-standard"}, url: {action: "create"} do |f| %>
       <%= image_tag("logo", alt: "logo", id: "logo", size: "340x127") %>
       <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
       <%= f.label :email, class: "sr-only" %>
@@ -16,7 +16,3 @@
       <p class="mt-5 mb-3"><%= link_to('Sign up instead', signup_path) %></p>
       <p><%= link_to('Sign in with GitHub', '/auth/github', method: :post) %></p>
     <% end %>
-
-
-
-  </body>
