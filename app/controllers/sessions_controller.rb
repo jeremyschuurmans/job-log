@@ -32,7 +32,7 @@ class SessionsController < ApplicationController
 
   def destroy
     log_out if logged_in?
-    flash[:alert] = "Have a nice day!"
+    flash[:info] = "Have a nice day!"
     redirect_to root_url
   end
 
