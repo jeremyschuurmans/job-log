@@ -1,0 +1,21 @@
+<%= form_for @company, :html => {class: "form-standard"}, url: {action: "update"} do |f| %>
+  <h1 class="h3 mb-3 font-weight-normal">Edit <%= @company.name %></h1>
+  <%= render "shared/error_messages" %>
+  <%= f.label :name, class: "sr-only" %>
+  <%= f.text_field :name, class: "form-control", value: @company.name %>
+  <%= f.fields_for :address do |a| %>
+    <%= a.label :street_address, "Street Address", class: "sr-only" %>
+    <%= a.text_field :street_address, class: "form-control", value: @company.address["street_address"] %>
+    <%= a.label :city, class: "sr-only" %>
+    <%= a.text_field :city, class: "form-control", value: @company.address["city"] %>
+    <%= a.label :state, class: "sr-only" %>
+    <%= a.text_field :state, class: "form-control", value: @company.address["state"] %>
+    <%= a.label :zip_code, "Zip", class: "sr-only" %>
+    <%= a.text_field :zip_code, class: "form-control", value: @company.address["zip_code"] %>
+  <% end %>
+  <%= f.label :phone, class: "sr-only" %>
+  <%= f.telephone_field :telephone_number, class: "form-control", value: @company.telephone_number %>
+  <%= f.label :contact_person, "Contact Person", class: "sr-only" %>
+  <%= f.text_field :contact_person, class: "form-control", value: @company.contact_person %>
+  <%= f.submit "Edit company", class: "btn btn-lg btn-primary btn-block" %>
+<% end %>
