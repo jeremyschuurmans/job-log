@@ -8,17 +8,18 @@
     <div class="container">
       <div class="row">
       <% @applications.each do |application| %>
-        <div class="col-md-4">
-          <div class="card mb-4 box-shadow">
-            <img class="card-img-top img-responsive" src="https://logo.clearbit.com/<%= application.company.company_url %>", alt="Company logo">
-              <div class="card-body">
-                <p class="card-text"><%= link_to application.company_name, company_application_path(application.company_id, application.id) %></p>
-                <%= application.date %>
-                <% if application.followup == true %>
-                  <%= application.followed_up %>
-                <% else %>
-                  <%= application.not_followed_up %>
-                <% end %>
+        <% if application.date != nil %>
+          <div class="col-md-4">
+            <div class="card mb-4 box-shadow">
+              <img class="card-img-top img-responsive" src="https://logo.clearbit.com/<%= application.company.company_url %>", alt="Company logo">
+                <div class="card-body">
+                  <p class="card-text"><%= link_to application.company_name, company_application_path(application.company_id, application.id) %></p>
+                  <%= application.date %>
+                  <% if application.followup == true %>
+                    <%= application.followed_up %>
+                  <% else %>
+                    <%= application.not_followed_up %>
+                  <% end %>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
                     <%#= button_to "View", company_path(company), class: "btn btn-sm btn-outline-secondary", method: :get %>
@@ -28,8 +29,9 @@
               </div>
             </div>
           </div>
-          <% end %>
-        </div>
+        <% end %>
+      <% end %>
       </div>
     </div>
-  </main>
+  </div>
+</main>
