@@ -8,6 +8,5 @@
     <%= f.label :password, class: "sr-only" %>
     <%= f.password_field :password, class: "form-control", placeholder: "New password" %>
     <%= f.submit 'Update', class: "btn btn-lg btn-primary btn-block" %>
-    <%= button_to "Delete my account", user_path(@user), url: {action: "destroy"}, class: "btn btn-lg btn-primary btn-block", method: :delete, data: {confirm: "Are you sure about this?"} %>
-
+    <%= link_to 'Delete my account', user_path(@user), method: :delete, class: "btn btn-lg btn-primary btn-block", data: {confirm: "Are you sure about this?"} %>
 <% end %>

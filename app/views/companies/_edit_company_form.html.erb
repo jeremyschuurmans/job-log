@@ -18,5 +18,5 @@
   <%= f.label :contact_person, "Contact Person", class: "sr-only" %>
   <%= f.text_field :contact_person, class: "form-control", value: @company.contact_person %>
   <%= f.submit "Edit company", class: "btn btn-lg btn-primary btn-block" %>
-  <%= button_to "Delete company", company_path(@company), url: {action: "destroy"}, class: "btn btn-lg btn-primary btn-block", method: :delete, data: {confirm: "Are you sure about this?"} %>
+  <%= link_to "Delete company", company_path(@company), class: "btn btn-lg btn-primary btn-block", method: :delete, data: {confirm: "Are you sure about this?"} %>
 <% end %>
