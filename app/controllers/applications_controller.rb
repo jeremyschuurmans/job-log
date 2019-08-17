@@ -1,6 +1,6 @@
 class ApplicationsController < ApplicationController
   before_action :check_if_user_logged_in
-  before_action :does_this_application_belong_to_this_user?, only: [:show, :edit, :update, :delete]
+  before_action :does_this_application_belong_to_this_user?, only: [:show, :edit, :update]
   layout "form_page", only: [:show, :edit]
 
   def index
@@ -34,20 +34,7 @@ class ApplicationsController < ApplicationController
       redirect_to edit_company_application_url(@application)
     end
   end
-
-  def destroy
-    @company = Company.find(params[:id])
-    @application = Application.find(params[:id])
-    if @application.destroy
-      @company.applied = false
-      @company.save
-      flash[:success] = "Application deleted!"
-      redirect_to applications_url
-    else
-      flash[:danger] = "Application not deleted."
-      redirect_to company_application_url(@application)
-    end
-  end
+end
 
   private
 

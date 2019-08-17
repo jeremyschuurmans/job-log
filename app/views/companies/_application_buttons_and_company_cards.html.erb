@@ -17,7 +17,7 @@
           <div class="card mb-4 box-shadow">
             <img class="card-img-top img-responsive" src="https://logo.clearbit.com/<%= company.company_url %>", alt="Company logo">
               <div class="card-body">
-                <p class="card-text"><%= company.name %></p>
+                <p class="card-text"><%= company.name.capitalize %></p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
                     <%= button_to "View", company_path(company), class: "btn btn-sm btn-outline-secondary", method: :get %>
