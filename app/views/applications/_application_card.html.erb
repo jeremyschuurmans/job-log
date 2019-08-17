@@ -24,6 +24,7 @@
         <% end %>
       <% end %>
       <br>
+      <%= button_to "Edit", edit_company_application_path(id: @application.id, company_id: @application.company_id), class: "btn btn-sm btn-outline-secondary", method: :get %>
     </div>
   </div>
 </div>

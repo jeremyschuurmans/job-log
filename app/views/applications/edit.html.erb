@@ -1,1 +1,7 @@
+<% if @application.date == nil %>
+  <%= provide(:title, "New Application") %>
+<% else %>
+  <%= provide(:title, "Edit Application") %>
+<% end %>
+
 <%= render "edit_and_new_application_form" %>
