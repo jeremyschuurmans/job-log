@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   include UsersHelper
-  before_action :check_if_user_logged_in, only: [:edit, :update]
-  before_action :is_this_the_right_user?, only: [:edit, :update]
+  before_action :check_if_user_logged_in, only: [:edit, :update, :destroy]
+  before_action :is_this_the_right_user?, only: [:edit, :update, :destroy]
   layout "form_page"
 
   def new
@@ -33,6 +33,17 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       flash[:success] = "Information updated!"
       redirect_to companies_url
+    else
+      flash[:danger] = "Something went wrong."
+      redirect_to edit_user_url(@user)
+    end
+  end
+
+  def destroy
+    @user = current_user
+    if @user.destroy
+      flash[:success] = "We're sorry to see you go!"
+      redirect_to root_url
     else
       flash[:danger] = "Something went wrong."
       redirect_to edit_user_url(@user)
