@@ -39,7 +39,7 @@ class SessionsController < ApplicationController
   private
 
     def auth
-      Rails.application.env_config['omniauth.auth']
+      request.env['omniauth.auth']
     end
 
 end
