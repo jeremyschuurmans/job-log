@@ -31,7 +31,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'omniauth-github'
 gem 'dotenv-rails'
 gem 'omniauth-rails_csrf_protection'
-gem 'bootstrap', '~> 4.0.0'
+gem "bootstrap", ">= 4.3.1"
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
