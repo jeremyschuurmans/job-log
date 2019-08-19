@@ -42,6 +42,7 @@ class UsersController < ApplicationController
   def destroy
     @user = current_user
     if @user.destroy
+      @user.companies.all.destroy
       flash[:alert] = "We're sorry to see you go!"
       redirect_to root_url
     else
