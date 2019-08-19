@@ -4,7 +4,7 @@ Job hunting sucks. But it doesn't have to. JobLog is a tool for helping job-seek
 
 ## Installation
 
-This app is live at ![](https://my-job-log.herokuapp.com). You can create your own account the standard way, or via OmniAuth GitHub. A demo account is also setup (username: "john.doe@examplemail.com", password: "securepassword").
+This app is live at [](https://my-job-log.herokuapp.com). You can create your own account the standard way, or via OmniAuth GitHub. A demo account is also setup (username: "john.doe@examplemail.com", password: "securepassword").
 
 To play with the app locally,
 
