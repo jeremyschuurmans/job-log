@@ -11,7 +11,7 @@ RSpec.feature "UserLogIns", type: :feature do
       visit login_path
       fill_in 'session_email', with: user.email
       fill_in 'session_password', with: user.password
-      click_button 'Log In'
+      click_button 'Sign in'
 
       expect(current_path).to eq('/companies')
       expect(page).to have_content('Sign Out')
@@ -25,10 +25,10 @@ RSpec.feature "UserLogIns", type: :feature do
       visit login_path
       fill_in 'session_email', with: 'bob@bob.com'
       fill_in 'session_password', with: 'bobspassword'
-      click_button 'Log In'
+      click_button 'Sign in'
 
       expect(current_path).to eq('/login')
-      expect(page).to have_content('Log In')
+      expect(page).to have_content("Please sign in")
     end
   end
 end

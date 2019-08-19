@@ -8,7 +8,7 @@ RSpec.feature "UserSignUps", type: :feature do
       fill_in 'user_name', with: 'Ada Lovelace'
       fill_in 'user_email', with: 'ada@googlemail.com'
       fill_in 'user_password', with: 'password'
-      click_button 'Sign Up'
+      click_button 'Sign up'
 
       expect(current_path).to eq('/companies')
       expect(page).to have_content('Sign Out')
@@ -17,10 +17,10 @@ RSpec.feature "UserSignUps", type: :feature do
     scenario 'with invalid email and password' do
       visit signup_path
       fill_in 'user_name', with: 'Ada Lovelace'
-      click_button 'Sign Up'
+      click_button 'Sign up'
 
       expect(current_path).to eq('/signup')
-      expect(page).to have_content('Sign Up')
+      expect(page).to have_content('Sign up')
     end
   end
 
@@ -30,7 +30,7 @@ RSpec.feature "UserSignUps", type: :feature do
       fill_in 'user_name', with: 'Ada Lovelace'
       fill_in 'user_email', with: 'ada@googlemail.com'
       fill_in 'user_password', with: 'password'
-      click_button 'Sign Up'
+      click_button 'Sign up'
 
       expect(current_path).to eq('/companies')
       expect(page).to have_content('Sign Out')
@@ -39,9 +39,9 @@ RSpec.feature "UserSignUps", type: :feature do
       fill_in 'user_name', with: 'Ada Lovelace'
       fill_in 'user_email', with: 'ada@googlemail.com'
       fill_in 'user_password', with: 'password'
-      click_button 'Sign Up'
+      click_button 'Sign up'
       expect(current_path).to eq('/login')
-      expect(page).to have_content('Log In')
+      expect(page).to have_content('Sign in')
     end
   end
 end

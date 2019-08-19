@@ -7,7 +7,7 @@ RSpec.describe SessionsController, type: :controller do
     it "loads the log in page" do
       get :new
       expect(response.status).to eq(200)
-      expect(response.body).to include("Log In")
+      expect(response.body).to include("Sign In")
     end
   end
 

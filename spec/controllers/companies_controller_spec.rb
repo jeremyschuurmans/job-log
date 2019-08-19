@@ -25,7 +25,7 @@ RSpec.describe CompaniesController, type: :controller do
       log_in(user)
       get :new
       expect(response.status).to eq(200)
-      expect(response.body).to include("Submit Company")
+      expect(response.body).to include("Submit company")
     end
 
     it "instantiates a new company" do
@@ -49,7 +49,7 @@ RSpec.describe CompaniesController, type: :controller do
                             contact_person: "Nelson Bighetti")
 
       expect(company.name).to eq("Pied Piper")
-      expect(company.id).to eq(6)
+      expect(company.id).to eq(3)
     end
   end
 

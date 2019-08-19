@@ -9,7 +9,7 @@ RSpec.feature "CreateCompanies", type: :feature do
       visit login_path
       fill_in 'session_email', with: user.email
       fill_in 'session_password', with: user.password
-      click_button 'Log In'
+      click_button 'Sign in'
 
       expect(current_path).to eq('/companies')
       expect(page).to have_content('Sign Out')
@@ -24,14 +24,14 @@ RSpec.feature "CreateCompanies", type: :feature do
       fill_in 'company_address_zip_code', with: 97227
       fill_in 'company_telephone_number', with: 503-847-9214
       fill_in 'company_contact_person', with: "Robby Russell"
-      click_button 'Submit Company'
+      click_button 'Submit company'
 
       expect(Company.last.name).to eq("Planet Argon")
       expect(user.companies.last.name).to eq("Planet Argon")
       expect(user.companies.count).to eq(1)
       expect(Application.last.user_id).to eq(user.id)
       expect(Application.last.company_id).to eq(Company.last.id)
-      expect(Application.last.company_name).to eq(nil)
+      expect(Application.last.company_name).to eq("Planet Argon")
     end
   end
 end
