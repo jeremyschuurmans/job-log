@@ -35,6 +35,7 @@ $(function() {
 $(function() {
   $(".next-company").on("click", function() {
     let companyId = parseInt($(".next-company").attr("company-id")) + 1;
+
     $.getJSON("/companies/" + companyId + ".json", function(data) {
       let companyUrl = data.name.toLowerCase().replace(/\s/g, '') + ".com";
       $(".company-logo").attr("src", "https://logo.clearbit.com/" + companyUrl)
