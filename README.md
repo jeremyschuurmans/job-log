@@ -1,6 +1,6 @@
 # JobLog
 
-Job hunting sucks. But it doesn't have to. JobLog is a tool for helping job-seekers stay focused and organized in the job hunt. It allows you to quickly see specific companies you want to work at, and when you apply to those companies, log the date of application, if and when you followed up, and the response.
+Job hunting is hard. But it doesn't have to be. JobLog is a tool for helping job-seekers stay focused and organized in the job hunt. It allows you to quickly see specific companies you want to work at, and when you apply to those companies, log the date of application, if and when you followed up, and the response.
 
 ## Installation
 
