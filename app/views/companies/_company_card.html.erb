@@ -3,15 +3,15 @@
   <div class="card box-shadow" style="width:400px;">
     <img class="company-logo card-img-top" src="https://logo.clearbit.com/<%= @company.company_url %>" alt="Card image" style="width:100%">
     <div class="card-body">
-      <h4 class="company-name"><%= @company.name.capitalize %></h4>
+      <h4 class="company-name"><%= @company.name %></h4>
       <p class="address">
-        <div class="company-street-address"><%= @company.address['street_address'].capitalize %></div>
-        <div class="company-city"><%= @company.address['city'].capitalize %></div>
-        <div class="company-state"><%= @company.address['state'].capitalize %></div>
+        <div class="company-street-address"><%= @company.address['street_address'] %></div>
+        <div class="company-city"><%= @company.address['city'] %></div>
+        <div class="company-state"><%= @company.address['state'] %></div>
         <div class="company-zip"><%= @company.address['zip'] %></div>
       </p>
       <div class="company-telephone"><%= number_to_phone(@company.telephone_number) %></div>
-      <div class="company-contact"><%= @company.contact_person.capitalize %></div>
+      <div class="company-contact"><%= @company.contact_person %></div>
       <div class="company-applied"><% if @company.applied == true %>
         <%= @company.have_applied %>
       <% else %>
