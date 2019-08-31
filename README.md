@@ -20,7 +20,7 @@ To play with the app locally,
 
 ## Usage
 
-1. When you create an account, you will be logged in taken to a blank page. This is where you will put all the companies you want to apply to.
+1. When you create an account, you will be logged in and taken to a blank page. This is where you will put all the companies you want to apply to.
 
 2. Click the *Add a New Company* link on the menu bar.
 

@@ -1,9 +1,9 @@
 <div class="welcome-image-container">
-  <%#= render "shared/flash_messages" %>
-  <div class="alert alert-info alert-dismissable">
+  <%= render "shared/flash_messages" %>
+   <!-- <div class="alert alert-info alert-dismissable">
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
     Welcome! If you'd like a demo of this app, you can sign in with the username: <strong>john.doe@examplemail.com</strong>, and the password: <strong>securepassword</strong>
-  </div>
+  </div> -->
   <%= image_tag("motivate", alt: "motivational quote", class: "img-fluid", id: "motivate", size: "700x700") %>
   <%= link_to('Sign up', signup_path, class: "btn btn-lg btn-secondary btn-block") %>
   <%= link_to('Sign in', login_path, class: "btn btn-lg btn-secondary btn-block") %>
