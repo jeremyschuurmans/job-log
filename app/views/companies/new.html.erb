@@ -5,38 +5,29 @@
 <script type="text/javascript">
   // Keeping JS here for now, because certain features break when moved to assets folder. TODO: debug.
 
-
   $(function() {
     setupCreateNewCompany();
   });
-
-  function createNewCompany(url, data) {
-    $.post(url, data, "json")
-     .done(json => {
-       let newCompany = new Company(json);
-       newCompany.updateHTML();
-    });
-  };
 
   class Company {
     constructor(json) {
       this.data = json;
     }
     updateHTML() {
-      let companyLink = `<a href="/companies/${this.data.id}">${this.data.name}</a>`;
-      let companyUrl = this.data.name.toLowerCase().replace(/\s/g, '') + ".com";
-      let companyLogo = `<img src="https://logo.clearbit.com/${companyUrl}">`;
+      const COMPANY_LINK = `<a href="/companies/${this.data.id}">${this.data.name}</a>`;
+      const COMPANY_URL = this.data.name.toLowerCase().replace(/\s/g, '') + ".com";
+      const COMPANY_LOGO = `<img src="https://logo.clearbit.com/${COMPANY_URL}">`;
 
-      $(".logo").html(companyLogo);
-      $(".link").html(companyLink);
+      $(".logo").html(COMPANY_LOGO);
+      $(".link").html(COMPANY_LINK);
       $(".street-address").text(this.data.address.street_address);
       $(".city").text(this.data.address.city);
       $(".state").text(this.data.address.state);
       $(".zip").text(this.data.address.zip_code);
       $(".telephone").text(this.data.telephone_number);
       $(".contact").text(this.data.contact_person);
-    };
-  };
+    }
+  }
 
   function setupCreateNewCompany() {
     $("form").submit(function(event) {
@@ -47,6 +38,13 @@
 
       createNewCompany(url, inputValues);
     });
-  };
+  }
 
+  function createNewCompany(url, data) {
+    $.post(url, data, "json")
+    .done(json => {
+      let newCompany = new Company(json);
+      newCompany.updateHTML();
+    });
+  }
 </script>
