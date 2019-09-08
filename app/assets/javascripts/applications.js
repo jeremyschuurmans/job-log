@@ -12,7 +12,6 @@ $(function() {
    });
 });
 
-
 $(function() {
   $(".sort-all").on("click", function() {
     $.getJSON("/applications.json", function(data) {
@@ -27,11 +26,12 @@ $(function() {
           }
             return 0;
        });
-       let applications = SORTED_APPLICATIONS.forEach(function(application) {
-          let newApplication = new Application(application);
-          let applicationHTML = newApplication.showApplications();
+       
+       SORTED_APPLICATIONS.forEach(function(application) {
+          const NEW_APPLICATION = new Application(application);
+          const APPLICATION_HTML = NEW_APPLICATION.showApplications();
 
-          document.getElementById("apps").innerHTML += applicationHTML;
+          document.getElementById("apps").innerHTML += APPLICATION_HTML;
 
         }
       );
@@ -81,15 +81,15 @@ class Application {
 
 Application.prototype.showApplications = function() {
   if (this.date !== null) {
-  return `
-    <div class="company-info">
-      <ul>
-        <li>
-          <a href="/companies/${this.company_id}/applications/${this.id}">${this.company_name}</a>
-          <p>${this.date}</p>
-        </li>
-      </ul>
-    </div>`
+    return `
+      <div class="company-info">
+        <ul>
+          <li>
+            <a href="/companies/${this.company_id}/applications/${this.id}">${this.company_name}</a>
+            <p>${this.date}</p>
+          </li>
+        </ul>
+      </div>`
     } else {
       return `
         <div class="company-info">
@@ -102,4 +102,5 @@ Application.prototype.showApplications = function() {
         </div>`
 
     }
+
 }
