@@ -1,19 +1,5 @@
 $(function() {
-  $(".show-all").one("click", function() {
-    $.getJSON("/applications.json", function(data) {
-        data.forEach(function(application) {
-            let newApplication = new Application(application);
-            let applicationHTML = newApplication.showApplications();
-
-            document.getElementById("apps").innerHTML += applicationHTML;
-
-          }
-      )});
-   });
-});
-
-$(function() {
-  $(".sort-all").on("click", function() {
+  $(".show-all").on("click", function() {
     $.getJSON("/applications.json", function(data) {
       const SORTED_APPLICATIONS = data.sort(function(a, b) {
         const NAME_A = a.company_name.toUpperCase();
@@ -26,9 +12,9 @@ $(function() {
           }
             return 0;
        });
-       
+
        SORTED_APPLICATIONS.forEach(function(application) {
-          const NEW_APPLICATION = new Application(application);
+          const NEW_APPLICATION  = new Application(application);
           const APPLICATION_HTML = NEW_APPLICATION.showApplications();
 
           document.getElementById("apps").innerHTML += APPLICATION_HTML;
