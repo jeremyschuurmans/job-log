@@ -15,7 +15,7 @@
     }
     updateHTML() {
       const COMPANY_LINK = `<a href="/companies/${this.data.id}">${this.data.name}</a>`;
-      const COMPANY_URL = this.data.name.toLowerCase().replace(/\s/g, '') + ".com";
+      const COMPANY_URL = this.data.name.toString().toLowerCase().replace(/\s/g, '') + ".com";
       const COMPANY_LOGO = `<img src="https://logo.clearbit.com/${COMPANY_URL}">`;
 
       $(".logo").html(COMPANY_LOGO);
